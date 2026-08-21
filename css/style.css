@@ -5,12 +5,14 @@
 }
 
 :root {
-    --primary-color: #D4845C;
-    --secondary-color: #2C5F2D;
-    --accent-color: #E8A76F;
-    --dark-color: #1a1a1a;
-    --light-color: #f5f5f5;
-    --text-color: #333;
+    --primary-color: #1a472a;
+    --secondary-color: #d4a574;
+    --accent-color: #8b6f47;
+    --text-dark: #2c3e50;
+    --text-light: #fff;
+    --bg-light: #f8f6f1;
+    --bg-white: #ffffff;
+    --border-color: #e0d5c7;
 }
 
 html {
@@ -18,10 +20,10 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: #fff;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
 }
 
 .container {
@@ -32,12 +34,12 @@ body {
 
 /* NAVIGATION */
 .navbar {
-    background: rgba(0, 0, 0, 0.85);
-    padding: 1rem 0;
+    background: var(--primary-color);
+    padding: 1.2rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 15px rgba(26, 71, 42, 0.15);
 }
 
 .navbar .container {
@@ -47,62 +49,76 @@ body {
 }
 
 .nav-brand {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .nav-menu a {
-    color: #fff;
+    color: var(--text-light);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
     font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
 }
 
-.nav-menu a:hover {
-    color: var(--primary-color);
+.nav-menu a:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover:after {
+    width: 100%;
 }
 
 /* BUTTONS */
 .btn {
-    padding: 12px 30px;
+    padding: 13px 35px;
     border: none;
-    border-radius: 5px;
-    font-size: 1rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: all 0.3s;
-    font-weight: bold;
+    transition: all 0.3s ease;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
 .btn-primary {
-    background: var(--primary-color);
-    color: white;
+    background: var(--secondary-color);
+    color: var(--primary-color);
     margin-right: 1rem;
 }
 
 .btn-primary:hover {
-    background: #c96a47;
+    background: #c9924a;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 132, 92, 0.3);
+    box-shadow: 0 8px 20px rgba(212, 165, 116, 0.3);
 }
 
 .btn-secondary {
     background: transparent;
-    color: white;
-    border: 2px solid white;
+    color: var(--text-light);
+    border: 2px solid var(--secondary-color);
 }
 
 .btn-secondary:hover {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
+    background: var(--secondary-color);
+    color: var(--primary-color);
     transform: translateY(-2px);
 }
 
@@ -116,49 +132,53 @@ body {
 }
 
 .hero-content {
-    padding: 60px 40px;
-    background: linear-gradient(135deg, rgba(44, 95, 45, 0.9), rgba(212, 132, 92, 0.9));
-    color: white;
+    padding: 60px 50px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2d5a42 100%);
+    color: var(--text-light);
     z-index: 2;
 }
 
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
-    font-weight: 900;
-    line-height: 1.1;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
 }
 
 .hero .tagline {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 2rem;
     font-weight: 300;
-    color: var(--accent-color);
+    color: var(--secondary-color);
+    letter-spacing: 0.5px;
 }
 
 .hero-text {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+    font-size: 1.05rem;
+    margin-bottom: 2.5rem;
     line-height: 1.8;
     opacity: 0.95;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .hero-image {
     height: 100%;
     width: 100%;
+    background-size: cover;
+    background-position: center;
 }
 
 /* PAGE 2: ABOUT */
 .about {
-    padding: 80px 20px;
-    background: var(--light-color);
+    padding: 100px 20px;
+    background: var(--bg-white);
 }
 
 .about .container h2,
@@ -167,16 +187,17 @@ body {
 }
 
 .about h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 2rem;
-    color: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .about-text {
-    font-size: 1.1rem;
-    max-width: 800px;
+    font-size: 1.05rem;
+    max-width: 750px;
     margin: 0 auto 3rem;
-    line-height: 1.8;
+    line-height: 1.9;
     color: #555;
 }
 
@@ -188,16 +209,17 @@ body {
 }
 
 .info-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
+    background: var(--bg-light);
+    padding: 2.5rem;
+    border-radius: 8px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    border-top: 4px solid var(--secondary-color);
+    transition: all 0.3s ease;
 }
 
 .info-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(26, 71, 42, 0.1);
 }
 
 .info-card h3 {
@@ -213,118 +235,133 @@ body {
 
 /* PAGE 3: DESTINATIONS */
 .destinations {
-    padding: 80px 20px;
+    padding: 100px 20px;
+    background: var(--bg-light);
 }
 
 .destinations h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     text-align: center;
-    margin-bottom: 3rem;
-    color: var(--secondary-color);
+    margin-bottom: 4rem;
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .destinations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .destination-card {
-    background: white;
-    border-radius: 10px;
+    background: var(--bg-white);
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
 }
 
 .destination-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(26, 71, 42, 0.15);
 }
 
 .destination-card img {
     width: 100%;
     height: 250px;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover img {
+    transform: scale(1.05);
 }
 
 .destination-card h3 {
     padding: 1.5rem 1.5rem 0.5rem;
     font-size: 1.3rem;
     color: var(--primary-color);
+    font-weight: 600;
 }
 
 .destination-card p {
     padding: 0 1.5rem 1.5rem;
     color: #666;
     font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 /* PAGE 4: EXPERIENCES */
 .experiences {
-    padding: 80px 20px;
-    background: var(--light-color);
+    padding: 100px 20px;
+    background: var(--bg-white);
 }
 
 .experiences h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     text-align: center;
-    margin-bottom: 3rem;
-    color: var(--secondary-color);
+    margin-bottom: 4rem;
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .experiences-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
 }
 
 .experience-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
+    background: var(--bg-light);
+    padding: 2.5rem;
+    border-radius: 8px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
-    border-top: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .experience-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--secondary-color);
+    box-shadow: 0 10px 30px rgba(212, 165, 116, 0.2);
 }
 
 .experience-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
 }
 
 .experience-card h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 .experience-card p {
     color: #666;
     font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 /* PAGE 5: FOOD & PRODUCTS */
 .food-section {
-    padding: 80px 20px;
+    padding: 100px 20px;
+    background: var(--bg-light);
 }
 
 .food-section h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     text-align: center;
     margin-bottom: 1rem;
-    color: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .food-caption {
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: #666;
     margin-bottom: 3rem;
     font-style: italic;
@@ -333,22 +370,23 @@ body {
 .food-products {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
+    gap: 2.5rem;
 }
 
 .food-category {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: var(--bg-white);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
 .food-category h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
-    border-bottom: 3px solid var(--primary-color);
     padding-bottom: 1rem;
+    border-bottom: 3px solid var(--secondary-color);
+    font-weight: 600;
 }
 
 .food-category ul {
@@ -356,10 +394,15 @@ body {
 }
 
 .food-category li {
-    padding: 0.7rem 0;
+    padding: 0.8rem 0;
     color: #555;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
     font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.food-category li:hover {
+    color: var(--secondary-color);
 }
 
 .food-category li:last-child {
@@ -368,67 +411,72 @@ body {
 
 /* PAGE 6: SERVICES */
 .services {
-    padding: 80px 20px;
-    background: var(--light-color);
+    padding: 100px 20px;
+    background: var(--bg-white);
 }
 
 .services h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     text-align: center;
-    margin-bottom: 3rem;
-    color: var(--secondary-color);
+    margin-bottom: 4rem;
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .service-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
+    background: var(--bg-light);
+    padding: 2.5rem;
+    border-radius: 8px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-    background: linear-gradient(135deg, rgba(212, 132, 92, 0.05), rgba(44, 95, 45, 0.05));
+    transform: translateY(-8px);
+    background: var(--bg-white);
+    box-shadow: 0 10px 30px rgba(26, 71, 42, 0.1);
 }
 
 .service-card h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
+    font-weight: 600;
 }
 
 .service-card p {
     color: #666;
     font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 /* PAGE 7: TOUR PACKAGE */
 .tour-package {
-    padding: 80px 20px;
+    padding: 100px 20px;
+    background: var(--bg-light);
 }
 
 .tour-package h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     text-align: center;
     margin-bottom: 1rem;
-    color: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .package-duration {
     text-align: center;
-    font-size: 1.3rem;
-    color: var(--primary-color);
-    font-weight: bold;
-    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-bottom: 3rem;
+    letter-spacing: 1px;
 }
 
 .package-days {
@@ -439,17 +487,18 @@ body {
 }
 
 .day {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid var(--primary-color);
+    background: var(--bg-white);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid var(--secondary-color);
 }
 
 .day h3 {
     font-size: 1.2rem;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
 }
 
 .day ul {
@@ -457,29 +506,30 @@ body {
 }
 
 .day li {
-    padding: 0.5rem 0;
-    color: #666;
+    padding: 0.6rem 0;
+    color: #555;
     font-size: 0.95rem;
 }
 
 .package-includes {
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-    color: white;
-    padding: 2rem;
-    border-radius: 10px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2d5a42 100%);
+    color: var(--text-light);
+    padding: 3rem;
+    border-radius: 8px;
     text-align: center;
 }
 
 .package-includes h4 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
 }
 
 .package-includes ul {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .package-includes li {
@@ -492,87 +542,99 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--text-light);
     text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.promo-ad::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 71, 42, 0.5);
+    z-index: 1;
 }
 
 .promo-content {
     z-index: 2;
+    position: relative;
 }
 
 .promo-ad h2 {
-    font-size: 3rem;
+    font-size: 3.2rem;
     margin-bottom: 1rem;
-    font-weight: 900;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    font-weight: 800;
+    letter-spacing: -1px;
 }
 
 .promo-ad h3 {
     font-size: 2rem;
     margin-bottom: 2rem;
-    color: var(--accent-color);
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    color: var(--secondary-color);
+    font-weight: 600;
 }
 
 .promo-features {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: 2.5rem;
     margin: 2rem 0;
     font-size: 1.1rem;
 }
 
-.promo-features span {
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-}
-
 .promo-cta {
-    font-size: 1.8rem;
-    font-weight: bold;
+    font-size: 1.6rem;
+    font-weight: 700;
     margin: 2rem 0;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    color: var(--secondary-color);
 }
 
 .promo-hashtag {
-    font-size: 1.3rem;
-    color: var(--accent-color);
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 /* PAGE 9: TRAVEL INFORMATION */
 .travel-info {
-    padding: 80px 20px;
-    background: var(--light-color);
+    padding: 100px 20px;
+    background: var(--bg-white);
 }
 
 .travel-info h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     text-align: center;
-    margin-bottom: 3rem;
-    color: var(--secondary-color);
+    margin-bottom: 4rem;
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .info-block {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: var(--bg-light);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border-top: 4px solid var(--secondary-color);
 }
 
 .info-block h3 {
     font-size: 1.3rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
-    border-bottom: 3px solid var(--primary-color);
-    padding-bottom: 1rem;
+    font-weight: 600;
 }
 
 .info-block ul {
@@ -580,38 +642,39 @@ body {
 }
 
 .info-block li {
-    padding: 0.7rem 0;
+    padding: 0.8rem 0;
     color: #555;
     font-size: 0.95rem;
 }
 
 /* PAGE 10: CONTACT */
 .contact-section {
-    padding: 80px 20px;
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-    color: white;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2d5a42 100%);
+    color: var(--text-light);
     text-align: center;
 }
 
 .contact-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 
 .contact-intro {
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     line-height: 1.8;
+    opacity: 0.95;
 }
 
 .contact-info {
     background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: 10px;
-    margin: 2rem 0;
+    padding: 2.5rem;
+    border-radius: 8px;
+    margin: 2.5rem auto;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .contact-info p {
@@ -620,26 +683,27 @@ body {
 }
 
 .contact-section .btn {
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 }
 
 .thank-you {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-top: 2rem;
-    font-weight: bold;
+    font-weight: 600;
     letter-spacing: 2px;
 }
 
 /* FOOTER */
 footer {
-    background: var(--dark-color);
-    color: white;
+    background: #1a2a1f;
+    color: var(--text-light);
     text-align: center;
-    padding: 2rem;
+    padding: 2.5rem;
 }
 
 footer p {
     margin: 0.5rem 0;
+    opacity: 0.9;
 }
 
 /* RESPONSIVE */
@@ -650,11 +714,11 @@ footer p {
     }
 
     .hero-content {
-        padding: 40px 20px;
+        padding: 40px 25px;
     }
 
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .hero .tagline {
@@ -663,6 +727,7 @@ footer p {
 
     .hero-buttons {
         flex-direction: column;
+        gap: 1rem;
     }
 
     .btn {
@@ -671,12 +736,11 @@ footer p {
 
     .btn-primary {
         margin-right: 0;
-        margin-bottom: 0.5rem;
     }
 
     .nav-menu {
         gap: 1rem;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     h2 {
@@ -694,5 +758,9 @@ footer p {
     .promo-features {
         flex-direction: column;
         gap: 1rem;
+    }
+
+    .promo-cta {
+        font-size: 1.2rem;
     }
 }
