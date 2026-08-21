@@ -1,231 +1,305 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Discover Ilocos Norte — where adventure meets heritage.">
-<title>Discover Ilocos Norte</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --forest:#203a2b; --forest2:#2f513c; --sage:#71846a; --cream:#f5f0e7;
-  --sand:#d9c4a4; --brown:#6b4b35; --ink:#1e211d; --white:#fffdf8;
-  --line:rgba(32,58,43,.15); --shadow:0 22px 60px rgba(30,33,29,.12);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
-h1,h2,h3{font-family:"Cormorant Garamond",serif;line-height:.98}
-a{text-decoration:none;color:inherit}
-img{display:block;width:100%;object-fit:cover}
-.container{width:min(1160px,92%);margin:auto}
-.nav{position:fixed;z-index:20;top:0;left:0;right:0;padding:18px 0;background:linear-gradient(180deg,rgba(20,31,24,.75),transparent);transition:.3s}
-.nav.scrolled{background:rgba(32,58,43,.95);backdrop-filter:blur(12px)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:"Cormorant Garamond";font-weight:700;font-size:27px;color:#fff;letter-spacing:.04em}
-.logo span{color:#d9c4a4}
-.nav-links{display:flex;gap:25px;color:#fff;font-size:13px;font-weight:600}
-.nav-links a{opacity:.9}.nav-links a:hover{color:#d9c4a4}
-.menu{display:none;color:#fff;border:1px solid rgba(255,255,255,.4);background:transparent;padding:7px 10px;border-radius:8px}
-.hero{min-height:100vh;position:relative;display:grid;place-items:center;overflow:hidden;background:#243b2e}
-.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,34,25,.75),rgba(18,34,25,.2) 65%),url("assets/bangui-windmills.jpeg") center/cover}
-.hero-content{position:relative;color:#fff;padding-top:70px;width:min(1160px,92%)}
-.kicker{text-transform:uppercase;letter-spacing:.24em;font-size:12px;font-weight:700;color:#d9c4a4;margin-bottom:16px}
-.hero h1{font-size:clamp(60px,10vw,128px);max-width:850px}
-.hero p{max-width:570px;font-size:17px;margin:22px 0 30px;color:rgba(255,255,255,.88)}
-.btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn{padding:13px 20px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:9px;transition:.25s}
-.btn-primary{background:#d9c4a4;color:var(--forest)}.btn-primary:hover{transform:translateY(-2px);background:#fff}
-.btn-outline{border:1px solid rgba(255,255,255,.55);color:#fff}.btn-outline:hover{background:#fff;color:var(--forest)}
-.hero-scroll{position:absolute;bottom:28px;left:4%;color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase;writing-mode:vertical-rl;opacity:.75}
-.section{padding:105px 0}
-.section.alt{background:#e9e4d9}
-.section.dark{background:var(--forest);color:#fff}
-.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.22em;font-weight:700;color:var(--brown);margin-bottom:12px}
-.dark .eyebrow{color:#d9c4a4}
-.title{font-size:clamp(42px,5vw,68px);color:var(--forest);max-width:760px}
-.dark .title{color:#fff}
-.lead{max-width:700px;font-size:17px;color:#596057;margin-top:18px}.dark .lead{color:#d9ded6}
-.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
-.about-image{height:560px;border-radius:3px;overflow:hidden;box-shadow:var(--shadow)}
-.about-image img{height:100%}
-.info-list{display:grid;gap:0;margin-top:28px;border-top:1px solid var(--line)}
-.info-item{padding:17px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:130px 1fr;gap:20px;font-size:14px}
-.info-item strong{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--brown)}
-.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:42px}
-.card{background:var(--white);border:1px solid rgba(32,58,43,.08);overflow:hidden;transition:.3s;box-shadow:0 10px 35px rgba(30,33,29,.06)}
-.card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
-.card-img{height:270px;overflow:hidden}.card-img img{height:100%;transition:.5s}.card:hover img{transform:scale(1.05)}
-.card-body{padding:22px}.card h3{font-size:29px;color:var(--forest);margin-bottom:8px}.card p{font-size:13px;color:#687068}
-.number{font-size:11px;color:var(--brown);font-weight:700;letter-spacing:.15em}
-.experience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
-.exp{padding:32px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);min-height:190px}
-.exp-icon{font-size:27px;margin-bottom:20px}.exp h3{font-size:31px;margin-bottom:8px}.exp p{color:#d0d8d0;font-size:14px}
-.food-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
-.food-photo{height:530px;overflow:hidden}.food-photo img{height:100%}
-.food-list{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);margin-top:28px}
-.food-list div{padding:15px 10px 15px 0;border-bottom:1px solid var(--line);font-size:14px}.food-list strong{display:block;color:var(--brown);font-size:10px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:3px}
-.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
-.service{background:#fff;border-top:4px solid var(--forest);padding:30px 24px;min-height:205px}.service h3{font-size:29px;color:var(--forest);margin:16px 0 8px}.service p{font-size:13px;color:#697168}
-.package{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;margin-top:42px}
-.package-card{background:var(--white);padding:34px;box-shadow:var(--shadow);border-left:5px solid var(--brown)}
-.day{padding:20px 0;border-bottom:1px solid var(--line)}.day:last-child{border-bottom:0}.day h3{font-size:28px;color:var(--forest)}.day p{font-size:14px;margin-top:6px;color:#626b63}
-.includes{background:var(--forest);color:#fff;padding:38px}.includes h3{font-size:36px;margin-bottom:20px}.includes li{list-style:none;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:14px}
-.ad{min-height:90vh;position:relative;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden}
-.ad:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(24,45,34,.55),rgba(24,45,34,.72)),url("assets/windmills-beach.jpeg") center/cover}
-.ad-content{position:relative;width:min(850px,90%)}.ad h2{font-size:clamp(58px,9vw,105px)}.ad p{font-size:17px;margin:20px auto;max-width:600px}.ad-points{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:25px 0 35px}.pill{border:1px solid rgba(255,255,255,.35);padding:9px 14px;border-radius:999px;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
-.travel{display:grid;grid-template-columns:1fr 1fr;gap:60px}.tips{margin-top:30px}.tips li{list-style:none;border-bottom:1px solid var(--line);padding:14px 0;font-size:14px}.tips li:before{content:"✦";color:var(--brown);margin-right:10px}
-.contact{min-height:75vh;background:var(--forest);color:#fff;display:grid;place-items:center;text-align:center;padding:100px 0}.contact h2{font-size:clamp(60px,9vw,105px);max-width:900px;margin:auto}.contact p{max-width:650px;margin:25px auto;color:#d6ddd5}.contact-details{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin:30px 0;color:#d9c4a4;font-size:13px}
-footer{background:#16271e;color:#bfc8bf;text-align:center;padding:25px;font-size:11px;letter-spacing:.08em}
-.reveal{opacity:0;transform:translateY(25px);transition:.8s ease}.reveal.show{opacity:1;transform:none}
-@media(max-width:900px){
- .nav-links{display:none}.menu{display:block}.dest-grid,.service-grid{grid-template-columns:repeat(2,1fr)}
- .about-grid,.food-grid,.package,.travel{grid-template-columns:1fr;gap:35px}.about-image{height:420px}
-}
-@media(max-width:600px){
- .section{padding:75px 0}.hero h1{font-size:62px}.hero p{font-size:15px}
- .dest-grid,.experience-grid,.service-grid{grid-template-columns:1fr}.food-list{grid-template-columns:1fr}
- .card-img{height:310px}.exp{min-height:auto}.contact h2{font-size:60px}
- .info-item{grid-template-columns:105px 1fr}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Ilocos Norte | Where Adventure Meets Heritage</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="nav" id="nav">
-  <div class="container nav-inner">
-    <a class="logo" href="#home">DISCOVER <span>ILOCOS NORTE</span></a>
-    <nav class="nav-links">
-      <a href="#about">About</a><a href="#destinations">Destinations</a><a href="#experiences">Experiences</a>
-      <a href="#food">Food</a><a href="#package">Package</a><a href="#plan">Plan</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">🌊 Ilocos Norte</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#experiences">Experiences</a></li>
+                <li><a href="#food">Food & Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
-    <button class="menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
-  </div>
-</header>
 
-<main>
-<section class="hero" id="home">
-  <div class="hero-content reveal">
-    <div class="kicker">Northern Luzon · Philippines</div>
-    <h1>Discover<br>Ilocos Norte</h1>
-    <p>Where adventure meets heritage. Explore breathtaking landscapes, rich history, delicious cuisine, and unforgettable adventures.</p>
-    <div class="btns"><a class="btn btn-primary" href="#destinations">Explore Now →</a><a class="btn btn-outline" href="#plan">Plan Your Trip</a></div>
-  </div>
-  <div class="hero-scroll">Scroll to explore</div>
-</section>
+    <!-- PAGE 1: HOME/COVER -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>DISCOVER ILOCOS NORTE</h1>
+            <p class="tagline">Where Adventure Meets Heritage</p>
+            <p class="hero-text">Explore breathtaking landscapes, rich history, delicious cuisine, and unforgettable adventures in Ilocos Norte.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollTo('destinations')">EXPLORE NOW</button>
+                <button class="btn btn-secondary" onclick="scrollTo('contact')">PLAN YOUR TRIP</button>
+            </div>
+        </div>
+        <div class="hero-image" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1520763185298-1b434c919abe?w=1200&h=800&fit=crop') center/cover; background-attachment: fixed;"></div>
+    </section>
 
-<section class="section" id="about">
- <div class="container about-grid">
-  <div class="about-image reveal"><img src="assets/coastal-road.jpeg" alt="Scenic coastal road in Ilocos Norte"></div>
-  <div class="reveal">
-   <div class="eyebrow">01 · About</div><h2 class="title">Discover the Beauty of Ilocos Norte</h2>
-   <p class="lead">Ilocos Norte is a destination known for its rich cultural heritage, historic landmarks, natural attractions, and delicious Ilocano cuisine. From beautiful beaches to remarkable architectural treasures, the province offers experiences for travelers who want adventure, relaxation, and cultural discovery.</p>
-   <div class="info-list">
-    <div class="info-item"><strong>Location</strong><span>Northern Luzon, Philippines</span></div>
-    <div class="info-item"><strong>Known for</strong><span>Beaches, heritage, nature, food</span></div>
-    <div class="info-item"><strong>Perfect for</strong><span>Adventure, culture, sightseeing</span></div>
-   </div>
-  </div>
- </div>
-</section>
+    <!-- PAGE 2: ABOUT ILOCOS NORTE -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Discover the Beauty of Ilocos Norte</h2>
+            <p class="about-text">Ilocos Norte is a destination known for its rich cultural heritage, historic landmarks, natural attractions, and delicious Ilocano cuisine. From beautiful beaches to remarkable architectural treasures, the province offers experiences for travelers who want adventure, relaxation, and cultural discovery.</p>
+            
+            <div class="about-info">
+                <div class="info-card">
+                    <h3>📍 Location</h3>
+                    <p>Northern Luzon, Philippines</p>
+                </div>
+                <div class="info-card">
+                    <h3>🎯 Known for</h3>
+                    <p>Beaches, heritage, nature, food</p>
+                </div>
+                <div class="info-card">
+                    <h3>✨ Perfect for</h3>
+                    <p>Adventure, culture, sightseeing</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="section alt" id="destinations">
- <div class="container">
-  <div class="eyebrow">02 · Destinations</div><h2 class="title">Must-Visit Places in Ilocos Norte</h2>
-  <div class="dest-grid">
-   <article class="card reveal"><div class="card-img"><img src="assets/bangui-windmills.jpeg" alt="Bangui Windmills"></div><div class="card-body"><div class="number">01</div><h3>Bangui Windmills</h3><p>See the iconic wind turbines along the Bangui coastline.</p></div></article>
-   <article class="card reveal"><div class="card-img"><img src="assets/pagudpud.jpeg" alt="Pagudpud"></div><div class="card-body"><div class="number">02</div><h3>Pagudpud</h3><p>Relax and enjoy the beautiful coastal scenery.</p></div></article>
-   <article class="card reveal"><div class="card-img"><img src="assets/paoay-church.jpeg" alt="Paoay Church"></div><div class="card-body"><div class="number">03</div><h3>Paoay Church</h3><p>Explore one of the Philippines’ renowned historic churches.</p></div></article>
-   <article class="card reveal"><div class="card-img"><img src="assets/bangui-sign.jpeg" alt="Ilocos Norte coastal landscape"></div><div class="card-body"><div class="number">04</div><h3>Kapurpurawan</h3><p>Discover unique rock formations shaped by nature.</p></div></article>
-  </div>
- </div>
-</section>
+    <!-- PAGE 3: TOP DESTINATIONS -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <h2>Must-Visit Places in Ilocos Norte</h2>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=400&h=300&fit=crop" alt="Bangui Windmills" loading="lazy">
+                    <h3>Bangui Windmills</h3>
+                    <p>See the iconic wind turbines along the Bangui coastline.</p>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop" alt="Pagudpud" loading="lazy">
+                    <h3>Pagudpud</h3>
+                    <p>Relax and enjoy the beautiful coastal scenery.</p>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?w=400&h=300&fit=crop" alt="Paoay Church" loading="lazy">
+                    <h3>Paoay Church</h3>
+                    <p>Explore one of the Philippines' renowned historic churches.</p>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Kapurpurawan" loading="lazy">
+                    <h3>Kapurpurawan Rock Formation</h3>
+                    <p>Discover unique rock formations shaped by nature.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="section dark" id="experiences">
- <div class="container">
-  <div class="eyebrow">03 · Experiences</div><h2 class="title">Experience Ilocos Norte</h2>
-  <div class="experience-grid">
-   <article class="exp reveal"><div class="exp-icon">◌</div><h3>Sightseeing</h3><p>Explore scenic landscapes and famous landmarks.</p></article>
-   <article class="exp reveal"><div class="exp-icon">◒</div><h3>Beach Adventures</h3><p>Enjoy the coastal beauty of Pagudpud.</p></article>
-   <article class="exp reveal"><div class="exp-icon">✦</div><h3>Cultural Exploration</h3><p>Discover Ilocano history and heritage.</p></article>
-   <article class="exp reveal"><div class="exp-icon">⌁</div><h3>Food Trip</h3><p>Taste authentic Ilocano dishes.</p></article>
-   <article class="exp reveal"><div class="exp-icon">◇</div><h3>Local Shopping</h3><p>Find local products and souvenirs.</p></article>
-   <article class="exp reveal"><div class="exp-icon">△</div><h3>Nature Exploration</h3><p>Visit natural attractions and scenic locations.</p></article>
-  </div>
- </div>
-</section>
+    <!-- PAGE 4: EXPERIENCES/THINGS TO DO -->
+    <section id="experiences" class="experiences">
+        <div class="container">
+            <h2>Experience Ilocos Norte</h2>
+            <div class="experiences-grid">
+                <div class="experience-card">
+                    <div class="experience-icon">🏞️</div>
+                    <h3>Sightseeing</h3>
+                    <p>Explore scenic landscapes and famous landmarks.</p>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-icon">🏖️</div>
+                    <h3>Beach Adventures</h3>
+                    <p>Enjoy the coastal beauty of Pagudpud.</p>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-icon">🏛️</div>
+                    <h3>Cultural Exploration</h3>
+                    <p>Discover Ilocano history and heritage.</p>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-icon">🍜</div>
+                    <h3>Food Trip</h3>
+                    <p>Taste authentic Ilocano dishes.</p>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-icon">🛍️</div>
+                    <h3>Local Shopping</h3>
+                    <p>Find local products and souvenirs.</p>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-icon">🌿</div>
+                    <h3>Nature Exploration</h3>
+                    <p>Visit natural attractions and scenic locations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="section" id="food">
- <div class="container food-grid">
-  <div class="reveal"><div class="eyebrow">04 · Taste & Take Home</div><h2 class="title">Taste & Take Home Ilocos Norte</h2><p class="lead">Bring home the flavors and culture of Ilocos Norte.</p>
-   <div class="food-list">
-    <div><strong>Local Food</strong>Ilocos Empanada</div><div><strong>Local Food</strong>Bagnet</div>
-    <div><strong>Local Food</strong>Ilocos Longganisa</div><div><strong>Local Food</strong>Pinakbet</div>
-    <div><strong>Local Food</strong>Sukang Iloko</div><div><strong>Products</strong>Woven products</div>
-    <div><strong>Products</strong>Handicrafts</div><div><strong>Products</strong>Local delicacies & souvenirs</div>
-   </div>
-  </div>
-  <div class="food-photo reveal"><img src="assets/bangui-sign.jpeg" alt="Local coastal tourism scene"></div>
- </div>
-</section>
+    <!-- PAGE 5: LOCAL FOOD & PRODUCTS -->
+    <section id="food" class="food-section">
+        <div class="container">
+            <h2>Taste & Take Home Ilocos Norte</h2>
+            <p class="food-caption">Bring home the flavors and culture of Ilocos Norte.</p>
+            
+            <div class="food-products">
+                <div class="food-category">
+                    <h3>🍴 Local Food</h3>
+                    <ul>
+                        <li>Ilocos Empanada</li>
+                        <li>Bagnet</li>
+                        <li>Ilocos Longganisa</li>
+                        <li>Pinakbet</li>
+                        <li>Sukang Iloko</li>
+                    </ul>
+                </div>
+                <div class="food-category">
+                    <h3>🎁 Local Products</h3>
+                    <ul>
+                        <li>Woven products</li>
+                        <li>Handicrafts</li>
+                        <li>Local delicacies</li>
+                        <li>Souvenirs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="section alt" id="services">
- <div class="container"><div class="eyebrow">05 · Services</div><h2 class="title">Services for Every Traveler</h2>
-  <div class="service-grid">
-   <article class="service reveal"><div class="number">01</div><h3>Accommodation</h3><p>Hotels, resorts, inns, and other lodging options.</p></article>
-   <article class="service reveal"><div class="number">02</div><h3>Transportation</h3><p>Transportation options for exploring the province.</p></article>
-   <article class="service reveal"><div class="number">03</div><h3>Tour Services</h3><p>Guided tours and travel assistance.</p></article>
-   <article class="service reveal"><div class="number">04</div><h3>Dining Services</h3><p>Restaurants and local food establishments.</p></article>
-  </div>
- </div>
-</section>
+    <!-- PAGE 6: TOURISM SERVICES -->
+    <section class="services">
+        <div class="container">
+            <h2>Services for Every Traveler</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>🏨 Accommodation</h3>
+                    <p>Hotels, resorts, inns, and other lodging options.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🚗 Transportation</h3>
+                    <p>Transportation options for exploring the province.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🗺️ Tour Services</h3>
+                    <p>Guided tours and travel assistance.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🍽️ Dining Services</h3>
+                    <p>Restaurants and local food establishments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="section" id="package">
- <div class="container"><div class="eyebrow">06 · Sample Package</div><h2 class="title">Ilocos Norte Adventure Package</h2>
-  <div class="package">
-   <div class="package-card reveal">
-    <div class="day"><h3>Day 1 — Heritage & Culture</h3><p>⛪ Paoay Church · 🏛️ Heritage attractions · 🍴 Local food experience</p></div>
-    <div class="day"><h3>Day 2 — Nature & Adventure</h3><p>🌬️ Bangui Windmills · 🏖️ Pagudpud · 🪨 Kapurpurawan Rock Formation</p></div>
-    <div class="day"><h3>Day 3 — Local Experience</h3><p>🛍️ Souvenir shopping · 🍴 Local delicacies · 📸 Final sightseeing</p></div>
-   </div>
-   <div class="includes reveal"><h3>Package Includes</h3><ul><li>✓ Accommodation</li><li>✓ Transportation assistance</li><li>✓ Guided sightseeing</li><li>✓ Selected attractions</li></ul></div>
-  </div>
- </div>
-</section>
+    <!-- PAGE 7: SAMPLE TOUR PACKAGE -->
+    <section class="tour-package">
+        <div class="container">
+            <h2>Ilocos Norte Adventure Package</h2>
+            <div class="package-duration">3 DAYS • 2 NIGHTS</div>
+            
+            <div class="package-days">
+                <div class="day">
+                    <h3>Day 1 — Heritage & Culture</h3>
+                    <ul>
+                        <li>⛪ Paoay Church</li>
+                        <li>🏛️ Heritage attractions</li>
+                        <li>🍴 Local food experience</li>
+                    </ul>
+                </div>
+                <div class="day">
+                    <h3>Day 2 — Nature & Adventure</h3>
+                    <ul>
+                        <li>🌬️ Bangui Windmills</li>
+                        <li>🏖️ Pagudpud</li>
+                        <li>🪨 Kapurpurawan Rock Formation</li>
+                    </ul>
+                </div>
+                <div class="day">
+                    <h3>Day 3 — Local Experience</h3>
+                    <ul>
+                        <li>🛍️ Souvenir shopping</li>
+                        <li>🍴 Local delicacies</li>
+                        <li>📸 Final sightseeing</li>
+                    </ul>
+                </div>
+            </div>
 
-<section class="ad" id="ad">
- <div class="ad-content reveal"><div class="kicker">07 · Your next escape</div><h2>Your Next Adventure Starts Here.</h2><p>Discover Ilocos Norte — a beautiful blend of coastlines, heritage, culture, cuisine, and natural wonders.</p>
-  <div class="ad-points"><span class="pill">Beautiful Beaches</span><span class="pill">Iconic Windmills</span><span class="pill">Rich Heritage</span><span class="pill">Delicious Cuisine</span><span class="pill">Natural Wonders</span></div>
-  <a class="btn btn-primary" href="#plan">Explore. Experience. Enjoy.</a>
- </div>
-</section>
+            <div class="package-includes">
+                <h4>Package Includes:</h4>
+                <ul>
+                    <li>✔️ Accommodation</li>
+                    <li>✔️ Transportation assistance</li>
+                    <li>✔️ Guided sightseeing</li>
+                    <li>✔️ Selected attractions</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<section class="section" id="plan">
- <div class="container travel">
-  <div class="reveal"><div class="eyebrow">08 · Travel Information</div><h2 class="title">Plan Your Visit</h2><p class="lead">Travel prepared, travel responsibly, and leave room for unforgettable moments.</p>
-   <ul class="tips">
-    <li>Comfortable clothes</li><li>Phone / camera</li><li>Personal essentials</li><li>Drinking water</li><li>Extra budget for food and souvenirs</li>
-   </ul>
-  </div>
-  <div class="reveal"><div class="eyebrow">Travel Tips</div><ul class="tips"><li>Respect local culture and heritage sites.</li><li>Keep tourist areas clean.</li><li>Follow local rules and regulations.</li><li>Support local businesses.</li></ul></div>
- </div>
-</section>
+    <!-- PAGE 8: PROMOTIONAL AD -->
+    <section class="promo-ad" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=1200&h=800&fit=crop') center/cover; background-attachment: fixed;">
+        <div class="promo-content">
+            <h2>YOUR NEXT ADVENTURE STARTS HERE.</h2>
+            <h3>DISCOVER ILOCOS NORTE</h3>
+            <div class="promo-features">
+                <span>🌊 Beautiful Beaches</span>
+                <span>🌬️ Iconic Windmills</span>
+                <span>⛪ Rich Heritage</span>
+                <span>🍴 Delicious Cuisine</span>
+                <span>🌿 Natural Wonders</span>
+            </div>
+            <p class="promo-cta">EXPLORE. EXPERIENCE. ENJOY.</p>
+            <p class="promo-hashtag">#DiscoverIlocosNorte</p>
+        </div>
+    </section>
 
-<section class="contact" id="contact">
- <div class="container reveal"><div class="eyebrow">09 · Contact</div><h2>Ready to Discover Ilocos Norte?</h2><p>Your adventure, cultural experience, and unforgettable memories are waiting.</p>
-  <div class="contact-details"><span>📍 Ilocos Norte, Philippines</span><span>✉ discoverilocosnorte@gmail.com</span><span>📱 Discover Ilocos Norte</span><span>📸 @DiscoverIlocosNorte</span></div>
-  <a class="btn btn-primary" href="#home">Explore Ilocos Norte Today ↑</a>
- </div>
-</section>
-</main>
-<footer>DISCOVER ILOCOS NORTE · EXPLORE. EXPERIENCE. ENJOY.</footer>
+    <!-- PAGE 9: TRAVEL INFORMATION -->
+    <section class="travel-info">
+        <div class="container">
+            <h2>Plan Your Visit</h2>
+            
+            <div class="info-grid">
+                <div class="info-block">
+                    <h3>What to Prepare:</h3>
+                    <ul>
+                        <li>📍 Comfortable clothes</li>
+                        <li>📍 Phone/camera</li>
+                        <li>📍 Personal essentials</li>
+                        <li>📍 Drinking water</li>
+                        <li>📍 Extra budget for food and souvenirs</li>
+                    </ul>
+                </div>
+                <div class="info-block">
+                    <h3>Travel Tips:</h3>
+                    <ul>
+                        <li>🤝 Respect local culture and heritage sites.</li>
+                        <li>🌍 Keep tourist areas clean.</li>
+                        <li>📜 Follow local rules and regulations.</li>
+                        <li>💼 Support local businesses.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
+    <!-- PAGE 10: CONTACT/END PAGE -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>READY TO DISCOVER ILOCOS NORTE?</h2>
+            <p class="contact-intro">Your adventure, cultural experience, and unforgettable memories are waiting.</p>
+            
+            <div class="contact-info">
+                <p><strong>📍 Ilocos Norte, Philippines</strong></p>
+                <p><strong>📧 Email:</strong> discoverilocosnorte@gmail.com</p>
+                <p><strong>📱 Facebook:</strong> Discover Ilocos Norte</p>
+                <p><strong>📸 Instagram:</strong> @DiscoverIlocosNorte</p>
+            </div>
+
+            <button class="btn btn-primary" onclick="scrollTo('home')">EXPLORE ILOCOS NORTE TODAY!</button>
+            
+            <p class="thank-you">THANK YOU!</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Discover Ilocos Norte. All rights reserved.</p>
+            <p>Experience the magic of Northern Luzon</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
