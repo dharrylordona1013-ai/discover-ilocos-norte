@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://discoverilocosnorte.pages.dev/sitemap.xml
