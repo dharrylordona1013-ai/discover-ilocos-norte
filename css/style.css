@@ -1,0 +1,698 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #D4845C;
+    --secondary-color: #2C5F2D;
+    --accent-color: #E8A76F;
+    --dark-color: #1a1a1a;
+    --light-color: #f5f5f5;
+    --text-color: #333;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* NAVIGATION */
+.navbar {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+/* BUTTONS */
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    margin-right: 1rem;
+}
+
+.btn-primary:hover {
+    background: #c96a47;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 132, 92, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* PAGE 1: HERO */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-content {
+    padding: 60px 40px;
+    background: linear-gradient(135deg, rgba(44, 95, 45, 0.9), rgba(212, 132, 92, 0.9));
+    color: white;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero .tagline {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    color: var(--accent-color);
+}
+
+.hero-text {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.hero-image {
+    height: 100%;
+    width: 100%;
+}
+
+/* PAGE 2: ABOUT */
+.about {
+    padding: 80px 20px;
+    background: var(--light-color);
+}
+
+.about .container h2,
+.about .container p {
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+}
+
+.about-text {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+.about-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.info-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.info-card p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* PAGE 3: DESTINATIONS */
+.destinations {
+    padding: 80px 20px;
+}
+
+.destinations h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--secondary-color);
+}
+
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.destination-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.destination-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.destination-card h3 {
+    padding: 1.5rem 1.5rem 0.5rem;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+.destination-card p {
+    padding: 0 1.5rem 1.5rem;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* PAGE 4: EXPERIENCES */
+.experiences {
+    padding: 80px 20px;
+    background: var(--light-color);
+}
+
+.experiences h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--secondary-color);
+}
+
+.experiences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.experience-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    border-top: 4px solid var(--primary-color);
+}
+
+.experience-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.experience-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.experience-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.experience-card p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* PAGE 5: FOOD & PRODUCTS */
+.food-section {
+    padding: 80px 20px;
+}
+
+.food-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.food-caption {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 3rem;
+    font-style: italic;
+}
+
+.food-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.food-category {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.food-category h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 1rem;
+}
+
+.food-category ul {
+    list-style: none;
+}
+
+.food-category li {
+    padding: 0.7rem 0;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    font-size: 1rem;
+}
+
+.food-category li:last-child {
+    border-bottom: none;
+}
+
+/* PAGE 6: SERVICES */
+.services {
+    padding: 80px 20px;
+    background: var(--light-color);
+}
+
+.services h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--secondary-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, rgba(212, 132, 92, 0.05), rgba(44, 95, 45, 0.05));
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.service-card p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* PAGE 7: TOUR PACKAGE */
+.tour-package {
+    padding: 80px 20px;
+}
+
+.tour-package h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.package-duration {
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.package-days {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.day {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid var(--primary-color);
+}
+
+.day h3 {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.day ul {
+    list-style: none;
+}
+
+.day li {
+    padding: 0.5rem 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.package-includes {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.package-includes h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.package-includes ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.package-includes li {
+    font-size: 1rem;
+}
+
+/* PAGE 8: PROMO AD */
+.promo-ad {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.promo-content {
+    z-index: 2;
+}
+
+.promo-ad h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.promo-ad h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--accent-color);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.promo-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    font-size: 1.1rem;
+}
+
+.promo-features span {
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.promo-cta {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 2rem 0;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.promo-hashtag {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* PAGE 9: TRAVEL INFORMATION */
+.travel-info {
+    padding: 80px 20px;
+    background: var(--light-color);
+}
+
+.travel-info h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--secondary-color);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.info-block {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.info-block h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 1rem;
+}
+
+.info-block ul {
+    list-style: none;
+}
+
+.info-block li {
+    padding: 0.7rem 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* PAGE 10: CONTACT */
+.contact-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-intro {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.contact-info {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-info p {
+    margin: 1rem 0;
+    font-size: 1rem;
+}
+
+.contact-section .btn {
+    margin: 1rem 0;
+}
+
+.thank-you {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* FOOTER */
+footer {
+    background: var(--dark-color);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .hero-content {
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero .tagline {
+        font-size: 1.2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .btn-primary {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-menu {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    h2 {
+        font-size: 2rem !important;
+    }
+
+    .promo-ad h2 {
+        font-size: 2rem;
+    }
+
+    .promo-ad h3 {
+        font-size: 1.3rem;
+    }
+
+    .promo-features {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
