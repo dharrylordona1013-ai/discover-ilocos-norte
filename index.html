@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Discover Ilocos Norte | Where the North Comes Alive</title>
 
@@ -51,9 +47,15 @@
       background: #f4f0e7;
       color: #171714;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    img {
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img,
+    video {
       display: block;
       width: 100%;
     }
@@ -67,20 +69,18 @@
       font: inherit;
     }
 
-    /* =========================================================
-       VARIABLES
-    ========================================================= */
-
     :root {
       --black: #171714;
       --dark: #11110f;
       --cream: #f4f0e7;
       --cream-light: #fbf9f3;
+      --sand: #e9e2d4;
       --gold: #b18a4a;
       --gold-light: #d7bd89;
       --muted: #716d64;
       --white: #ffffff;
       --line: rgba(23, 23, 20, 0.14);
+      --dark-line: rgba(255, 255, 255, 0.14);
     }
 
     /* =========================================================
@@ -115,6 +115,9 @@
     }
 
     .logo {
+      position: relative;
+      z-index: 1002;
+
       font-family: "Playfair Display", serif;
       font-size: 21px;
       font-weight: 600;
@@ -136,11 +139,12 @@
 
     .nav-links {
       display: flex;
-      gap: 30px;
+      gap: 27px;
 
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: 0.13em;
       text-transform: uppercase;
     }
 
@@ -150,6 +154,26 @@
 
     .nav-links a:hover {
       color: var(--gold-light);
+    }
+
+    .menu-toggle {
+      display: none;
+
+      position: relative;
+      z-index: 1002;
+
+      padding: 9px 12px;
+
+      border: 1px solid rgba(255,255,255,0.45);
+      background: transparent;
+
+      color: white;
+
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+
+      cursor: pointer;
     }
 
     /* =========================================================
@@ -169,47 +193,96 @@
 
       color: white;
 
+      overflow: hidden;
+
+      background: #151512;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+
+      overflow: hidden;
+
+      z-index: 0;
+    }
+
+    .hero-fallback {
+      position: absolute;
+      inset: 0;
+
       background:
         linear-gradient(
           90deg,
-          rgba(7, 9, 8, 0.76) 0%,
-          rgba(7, 9, 8, 0.42) 45%,
-          rgba(7, 9, 8, 0.12) 100%
+          rgba(7, 9, 8, 0.78),
+          rgba(7, 9, 8, 0.40) 45%,
+          rgba(7, 9, 8, 0.12)
         ),
         url("https://commons.wikimedia.org/wiki/Special:FilePath/Bangui%20WindMills.jpg?width=2400")
-        center center / cover no-repeat;
+        center / cover no-repeat;
+    }
+
+    .hero-media video {
+      position: relative;
+      z-index: 1;
+
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+
+      opacity: 0.72;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+
+      z-index: 2;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(7, 9, 8, 0.76),
+          rgba(7, 9, 8, 0.38) 45%,
+          rgba(7, 9, 8, 0.12)
+        );
     }
 
     .hero::after {
       content: "";
 
       position: absolute;
+
       left: 0;
       right: 0;
       bottom: 0;
 
-      height: 35%;
+      height: 38%;
+
+      z-index: 3;
 
       background: linear-gradient(
         transparent,
-        rgba(10, 10, 8, 0.65)
+        rgba(10, 10, 8, 0.72)
       );
     }
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 4;
 
       max-width: 900px;
     }
 
-    .eyebrow {
+    .eyebrow,
+    .section-kicker {
       color: var(--gold-light);
 
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
 
-      letter-spacing: 0.3em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
     }
 
@@ -217,8 +290,10 @@
       margin: 18px 0 25px;
 
       font-family: "Playfair Display", serif;
+
       font-size: clamp(60px, 9vw, 132px);
       font-weight: 600;
+
       line-height: 0.88;
 
       letter-spacing: -0.055em;
@@ -243,6 +318,7 @@
 
     .button {
       display: inline-flex;
+
       align-items: center;
       justify-content: center;
 
@@ -250,17 +326,15 @@
 
       border: 1px solid rgba(255,255,255,0.55);
 
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
 
       letter-spacing: 0.13em;
       text-transform: uppercase;
 
-      transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        border 0.25s ease,
-        transform 0.25s ease;
+      transition: 0.25s ease;
+
+      cursor: pointer;
     }
 
     .button:hover {
@@ -270,6 +344,7 @@
     .button-light {
       background: white;
       border-color: white;
+
       color: var(--black);
     }
 
@@ -288,11 +363,12 @@
       right: 5vw;
       bottom: 45px;
 
-      z-index: 3;
+      z-index: 5;
 
       writing-mode: vertical-rl;
 
       font-size: 9px;
+
       letter-spacing: 0.25em;
       text-transform: uppercase;
 
@@ -300,32 +376,39 @@
     }
 
     /* =========================================================
-       GENERAL SECTION
+       GENERAL
     ========================================================= */
 
     section {
       padding: 110px 7vw;
     }
 
-    .section-kicker {
-      color: var(--gold);
-
-      font-size: 10px;
-      font-weight: 700;
-
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-    }
-
     .section-title {
       margin-top: 15px;
 
       font-family: "Playfair Display", serif;
+
       font-size: clamp(44px, 6vw, 78px);
       font-weight: 600;
+
       line-height: 1;
 
       letter-spacing: -0.035em;
+    }
+
+    .section-title.small {
+      font-size: clamp(38px, 4.8vw, 62px);
+    }
+
+    .section-lead {
+      max-width: 680px;
+
+      margin-top: 22px;
+
+      color: var(--muted);
+
+      font-size: 16px;
+      line-height: 1.85;
     }
 
     /* =========================================================
@@ -334,6 +417,7 @@
 
     .intro {
       display: grid;
+
       grid-template-columns: 0.85fr 1.2fr;
 
       gap: 9vw;
@@ -358,6 +442,7 @@
 
     .destination-header {
       display: flex;
+
       justify-content: space-between;
       align-items: flex-end;
 
@@ -370,6 +455,7 @@
       max-width: 440px;
 
       color: var(--muted);
+
       font-size: 15px;
     }
 
@@ -409,6 +495,7 @@
 
     .destination-card img {
       position: absolute;
+
       inset: 0;
 
       width: 100%;
@@ -427,6 +514,7 @@
       content: "";
 
       position: absolute;
+
       inset: 25% 0 0;
 
       background: linear-gradient(
@@ -464,6 +552,7 @@
 
       font-size: 35px;
       font-weight: 600;
+
       line-height: 1;
     }
 
@@ -476,11 +565,103 @@
     }
 
     /* =========================================================
+       VIDEO
+    ========================================================= */
+
+    .video-section {
+      background: #181814;
+      color: white;
+    }
+
+    .video-header {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: flex-end;
+
+      gap: 40px;
+
+      margin-bottom: 45px;
+    }
+
+    .video-header p {
+      max-width: 430px;
+
+      color: #aaa;
+
+      font-size: 15px;
+    }
+
+    .video-frame {
+      position: relative;
+
+      min-height: 620px;
+
+      overflow: hidden;
+
+      background: #0e0e0c;
+    }
+
+    .video-fallback {
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          rgba(0,0,0,0.18),
+          rgba(0,0,0,0.58)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Patapat%20Viaduct%20in%20Pagudpud.jpg?width=2200")
+        center / cover no-repeat;
+    }
+
+    .video-frame video {
+      position: relative;
+      z-index: 1;
+
+      min-height: 620px;
+      height: 100%;
+
+      object-fit: cover;
+
+      opacity: 0.75;
+    }
+
+    .video-caption {
+      position: absolute;
+
+      z-index: 3;
+
+      left: 35px;
+      bottom: 32px;
+
+      max-width: 620px;
+    }
+
+    .video-caption h3 {
+      margin: 10px 0;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(35px, 5vw, 65px);
+
+      line-height: 0.95;
+    }
+
+    .video-caption p {
+      color: rgba(255,255,255,0.78);
+
+      font-size: 14px;
+    }
+
+    /* =========================================================
        EXPERIENCE
     ========================================================= */
 
     .dark-section {
       background: var(--dark);
+
       color: white;
     }
 
@@ -495,7 +676,7 @@
 
       margin-top: 50px;
 
-      border-top: 1px solid rgba(255,255,255,0.15);
+      border-top: 1px solid var(--dark-line);
     }
 
     .experience {
@@ -503,19 +684,20 @@
 
       padding: 28px 28px 25px 0;
 
-      border-bottom: 1px solid rgba(255,255,255,0.15);
+      border-bottom: 1px solid var(--dark-line);
     }
 
     .experience + .experience {
       padding-left: 28px;
 
-      border-left: 1px solid rgba(255,255,255,0.15);
+      border-left: 1px solid var(--dark-line);
     }
 
     .experience-number {
       color: var(--gold-light);
 
       font-size: 11px;
+
       letter-spacing: 0.15em;
     }
 
@@ -523,6 +705,7 @@
       margin: 22px 0 10px;
 
       font-family: "Playfair Display", serif;
+
       font-size: 27px;
       font-weight: 500;
     }
@@ -531,6 +714,73 @@
       color: #999;
 
       font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       DID YOU KNOW
+    ========================================================= */
+
+    .trivia-section {
+      background: var(--cream-light);
+    }
+
+    .trivia-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 18px;
+
+      margin-top: 50px;
+    }
+
+    .trivia-card {
+      min-height: 300px;
+
+      padding: 38px;
+
+      border: 1px solid var(--line);
+
+      background: #f1eadc;
+
+      transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .trivia-card:hover {
+      transform: translateY(-5px);
+
+      background: #ece3d2;
+    }
+
+    .fact-number {
+      color: var(--gold);
+
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: 0.2em;
+
+      text-transform: uppercase;
+    }
+
+    .trivia-card h3 {
+      margin: 28px 0 14px;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 30px;
+
+      line-height: 1.08;
+    }
+
+    .trivia-card p {
+      color: var(--muted);
+
+      font-size: 14px;
+
       line-height: 1.8;
     }
 
@@ -553,7 +803,7 @@
     }
 
     .food-image {
-      height: 650px;
+      min-height: 650px;
 
       background:
         linear-gradient(
@@ -578,7 +828,9 @@
 
     .dish {
       display: flex;
+
       justify-content: space-between;
+
       gap: 20px;
 
       padding: 18px 0;
@@ -588,6 +840,7 @@
 
     .dish strong {
       font-family: "Playfair Display", serif;
+
       font-size: 17px;
     }
 
@@ -598,13 +851,328 @@
     }
 
     /* =========================================================
-       CTA
+       PAGE 7 — TOUR PACKAGE
+    ========================================================= */
+
+    .package-section {
+      background: var(--cream);
+    }
+
+    .package-top {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: flex-end;
+
+      gap: 50px;
+
+      margin-bottom: 55px;
+    }
+
+    .package-meta {
+      text-align: right;
+
+      color: var(--gold);
+
+      font-size: 11px;
+      font-weight: 700;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+    }
+
+    .package-days {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .package-day {
+      min-height: 330px;
+
+      padding: 38px 30px 42px;
+    }
+
+    .package-day + .package-day {
+      border-left: 1px solid var(--line);
+    }
+
+    .day-number {
+      color: var(--gold);
+
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: 0.2em;
+    }
+
+    .package-day h3 {
+      margin: 18px 0 22px;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 30px;
+
+      line-height: 1;
+    }
+
+    .package-day ul {
+      list-style: none;
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    .package-day li {
+      padding: 10px 0;
+
+      border-bottom: 1px solid rgba(23,23,20,0.09);
+    }
+
+    .package-includes {
+      margin-top: 45px;
+
+      padding: 32px;
+
+      background: var(--dark);
+
+      color: white;
+    }
+
+    .package-includes-title {
+      margin-bottom: 22px;
+
+      color: var(--gold-light);
+
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: 0.2em;
+
+      text-transform: uppercase;
+    }
+
+    .includes-grid {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 20px;
+    }
+
+    .include-item {
+      padding-right: 20px;
+
+      border-right: 1px solid var(--dark-line);
+
+      font-size: 13px;
+    }
+
+    .include-item:last-child {
+      border-right: 0;
+    }
+
+    /* =========================================================
+       PAGE 8 — PROMOTIONAL AD
+    ========================================================= */
+
+    .promotion {
+      position: relative;
+
+      min-height: 100vh;
+      min-height: 100svh;
+
+      display: grid;
+
+      place-items: center;
+
+      overflow: hidden;
+
+      text-align: center;
+
+      color: white;
+
+      background: #111;
+    }
+
+    .promotion-bg {
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          rgba(5,7,6,0.38),
+          rgba(5,7,6,0.72)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Kapurpurawan%20Rock%20Formation%2C%20Ilocos%20Norte%20%2816016349609%29.jpg?width=2400")
+        center / cover no-repeat;
+
+      transform: scale(1.03);
+
+      transition: transform 8s ease;
+    }
+
+    .promotion:hover .promotion-bg {
+      transform: scale(1.07);
+    }
+
+    .promotion-content {
+      position: relative;
+
+      z-index: 2;
+
+      padding: 40px 20px;
+    }
+
+    .promotion h2 {
+      max-width: 1050px;
+
+      margin: 17px auto 25px;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(55px, 9vw, 125px);
+
+      font-weight: 600;
+
+      line-height: 0.88;
+
+      letter-spacing: -0.055em;
+    }
+
+    .promotion-subtitle {
+      margin-bottom: 30px;
+
+      font-size: 14px;
+
+      letter-spacing: 0.16em;
+
+      text-transform: uppercase;
+    }
+
+    .promotion-highlights {
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 11px 30px;
+
+      margin-bottom: 35px;
+
+      color: rgba(255,255,255,0.88);
+
+      font-size: 11px;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       PAGE 9 — PLAN YOUR VISIT
+    ========================================================= */
+
+    .plan {
+      background: var(--cream-light);
+    }
+
+    .plan-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 18px;
+
+      margin-top: 50px;
+    }
+
+    .plan-card {
+      padding: 35px;
+
+      background: #eee7d9;
+
+      border: 1px solid var(--line);
+    }
+
+    .plan-card h3 {
+      margin-bottom: 20px;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 29px;
+    }
+
+    .plan-list {
+      list-style: none;
+    }
+
+    .plan-list li {
+      padding: 13px 0;
+
+      border-bottom: 1px solid rgba(23,23,20,0.10);
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    .plan-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .plan-extra {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 18px;
+
+      margin-top: 18px;
+    }
+
+    .plan-extra article {
+      min-height: 180px;
+
+      padding: 28px;
+
+      background: var(--dark);
+
+      color: white;
+    }
+
+    .plan-extra h4 {
+      margin-bottom: 10px;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 22px;
+    }
+
+    .plan-extra p {
+      color: #999;
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       FINAL CTA
     ========================================================= */
 
     .cta {
       min-height: 68vh;
 
       display: grid;
+
       place-items: center;
 
       text-align: center;
@@ -616,12 +1184,8 @@
           rgba(10,10,8,0.56),
           rgba(10,10,8,0.72)
         ),
-        url("https://commons.wikimedia.org/wiki/Special:FilePath/Kapurpurawan%20Rock%20Formation%2C%20Ilocos%20Norte%20%2816016349609%29.jpg?width=2400")
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Patapat%20Viaduct%20in%20Pagudpud.jpg?width=2200")
         center / cover no-repeat;
-    }
-
-    .cta .section-kicker {
-      color: var(--gold-light);
     }
 
     .cta h2 {
@@ -632,10 +1196,86 @@
       font-family: "Playfair Display", serif;
 
       font-size: clamp(48px, 7vw, 94px);
+
       font-weight: 600;
+
       line-height: 0.95;
 
       letter-spacing: -0.045em;
+    }
+
+    /* =========================================================
+       PAGE 10 — CONTACT
+    ========================================================= */
+
+    .contact-end {
+      position: relative;
+
+      min-height: 82vh;
+
+      display: grid;
+
+      place-items: center;
+
+      overflow: hidden;
+
+      text-align: center;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          rgba(7,9,8,0.64),
+          rgba(7,9,8,0.80)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Bangui%20WindMills.jpg?width=2400")
+        center / cover no-repeat;
+    }
+
+    .contact-content {
+      max-width: 950px;
+    }
+
+    .contact-end h2 {
+      margin: 17px auto 25px;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(50px, 7vw, 95px);
+
+      line-height: 0.92;
+
+      letter-spacing: -0.045em;
+    }
+
+    .contact-description {
+      max-width: 670px;
+
+      margin: 0 auto 32px;
+
+      color: rgba(255,255,255,0.80);
+
+      font-size: 16px;
+    }
+
+    .contact-details {
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 14px 32px;
+
+      margin: 28px 0 35px;
+
+      color: rgba(255,255,255,0.88);
+
+      font-size: 12px;
+    }
+
+    .contact-details a:hover {
+      color: var(--gold-light);
     }
 
     /* =========================================================
@@ -644,7 +1284,9 @@
 
     footer {
       display: flex;
+
       justify-content: space-between;
+
       gap: 30px;
 
       padding: 45px 7vw;
@@ -665,7 +1307,7 @@
     }
 
     .footer-info {
-      max-width: 650px;
+      max-width: 700px;
 
       text-align: right;
 
@@ -674,7 +1316,28 @@
 
     .footer-info a {
       color: var(--gold-light);
+
       text-decoration: underline;
+    }
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(25px);
+
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+
+      transform: translateY(0);
     }
 
     /* =========================================================
@@ -687,8 +1350,43 @@
         padding: 18px 6vw;
       }
 
+      .menu-toggle {
+        display: block;
+      }
+
       .nav-links {
-        display: none;
+        position: fixed;
+
+        inset: 0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 25px;
+
+        background: rgba(17,17,15,0.98);
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transform: translateY(-10px);
+
+        transition: 0.25s ease;
+
+        font-size: 13px;
+      }
+
+      .nav-links.open {
+        opacity: 1;
+
+        pointer-events: auto;
+
+        transform: translateY(0);
       }
 
       .hero {
@@ -696,7 +1394,7 @@
       }
 
       .hero h1 {
-        font-size: clamp(58px, 17vw, 88px);
+        font-size: clamp(58px,17vw,88px);
       }
 
       .hero-description {
@@ -713,6 +1411,7 @@
 
       .intro {
         grid-template-columns: 1fr;
+
         gap: 30px;
       }
 
@@ -720,11 +1419,14 @@
         font-size: 16px;
       }
 
-      .destination-header {
+      .destination-header,
+      .video-header,
+      .package-top {
         display: block;
       }
 
-      .destination-intro {
+      .destination-intro,
+      .video-header p {
         margin-top: 25px;
       }
 
@@ -736,6 +1438,11 @@
         min-height: 430px;
 
         margin-bottom: 15px;
+      }
+
+      .video-frame,
+      .video-frame video {
+        min-height: 430px;
       }
 
       .experience-grid {
@@ -752,7 +1459,12 @@
 
       .experience:nth-child(3) {
         padding-left: 0;
+
         border-left: none;
+      }
+
+      .trivia-grid {
+        grid-template-columns: 1fr;
       }
 
       .food-layout {
@@ -760,11 +1472,59 @@
       }
 
       .food-image {
-        height: 430px;
+        min-height: 430px;
       }
 
-      .cta {
-        min-height: 60vh;
+      .package-days {
+        grid-template-columns: 1fr;
+      }
+
+      .package-day {
+        min-height: auto;
+      }
+
+      .package-day + .package-day {
+        border-left: 0;
+
+        border-top: 1px solid var(--line);
+      }
+
+      .package-meta {
+        margin-top: 25px;
+
+        text-align: left;
+      }
+
+      .includes-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .include-item {
+        border-right: 0;
+
+        border-bottom: 1px solid var(--dark-line);
+
+        padding-bottom: 15px;
+      }
+
+      .plan-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .plan-extra {
+        grid-template-columns: 1fr;
+      }
+
+      .promotion {
+        min-height: 78vh;
+      }
+
+      .promotion-highlights {
+        gap: 10px 18px;
+      }
+
+      .contact-end {
+        min-height: 75vh;
       }
 
       footer {
@@ -773,6 +1533,7 @@
 
       .footer-info {
         margin-top: 20px;
+
         text-align: left;
       }
     }
@@ -793,6 +1554,7 @@
 
       .hero-buttons {
         flex-direction: column;
+
         align-items: stretch;
       }
 
@@ -800,12 +1562,49 @@
         text-align: center;
       }
 
+      .includes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trivia-card,
+      .plan-card {
+        padding: 27px;
+      }
+
+      .promotion h2 {
+        font-size: clamp(48px,15vw,75px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+
+        transform: none;
+      }
     }
 
   </style>
 </head>
 
+
 <body>
+
 
   <!-- =======================================================
        NAVIGATION
@@ -813,16 +1612,61 @@
 
   <nav class="navbar" id="navbar">
 
-    <a href="#" class="logo">
-      <small>Province of</small>
+    <a href="#top" class="logo">
+
+      <small>
+        Province of
+      </small>
+
       Ilocos Norte
+
     </a>
 
-    <div class="nav-links">
-      <a href="#destinations">Destinations</a>
-      <a href="#experience">Experience</a>
-      <a href="#food">Taste</a>
-      <a href="#journey">Journey</a>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Open navigation"
+      aria-expanded="false"
+    >
+      Menu
+    </button>
+
+
+    <div class="nav-links" id="navLinks">
+
+      <a href="#destinations">
+        Destinations
+      </a>
+
+      <a href="#video">
+        Video
+      </a>
+
+      <a href="#experience">
+        Experience
+      </a>
+
+      <a href="#trivia">
+        Did You Know
+      </a>
+
+      <a href="#food">
+        Taste
+      </a>
+
+      <a href="#package">
+        Tour Package
+      </a>
+
+      <a href="#plan">
+        Plan Your Visit
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
     </div>
 
   </nav>
@@ -832,7 +1676,45 @@
        HERO
   ======================================================== -->
 
-  <header class="hero">
+  <header class="hero" id="top">
+
+    <div class="hero-media">
+
+      <div class="hero-fallback"></div>
+
+      <!--
+        VIDEO PLACEHOLDER
+
+        For the most reliable website:
+        replace this video URL with your own licensed
+        Ilocos Norte MP4 file.
+
+        Example:
+        /videos/ilocos-norte-hero.mp4
+      -->
+
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="https://commons.wikimedia.org/wiki/Special:FilePath/Bangui%20WindMills.jpg?width=2400"
+        aria-label="Scenic Ilocos Norte landscape video"
+      >
+
+        <source
+          src="https://cdn.coverr.co/videos/coverr-aerial-view-of-the-sea-1574/1080p.mp4"
+          type="video/mp4"
+        >
+
+      </video>
+
+    </div>
+
+
+    <div class="hero-overlay"></div>
+
 
     <div class="hero-content">
 
@@ -840,24 +1722,36 @@
         Northern Luzon · Philippines
       </div>
 
+
       <h1>
         Discover<br>
         Ilocos Norte
       </h1>
 
+
       <p class="hero-description">
+
         Where the wind meets the sea, centuries-old stone
         meets living culture, and every road leads to a story
         worth remembering.
+
       </p>
+
 
       <div class="hero-buttons">
 
-        <a href="#destinations" class="button button-light">
+        <a
+          href="#destinations"
+          class="button button-light"
+        >
           Explore the North
         </a>
 
-        <a href="#journey" class="button button-outline">
+
+        <a
+          href="#package"
+          class="button button-outline"
+        >
           Plan Your Journey
         </a>
 
@@ -865,8 +1759,9 @@
 
     </div>
 
+
     <div class="scroll-indicator">
-      Scroll to explore ↓
+      Scroll to explore
     </div>
 
   </header>
@@ -876,7 +1771,7 @@
        INTRO
   ======================================================== -->
 
-  <section class="intro">
+  <section class="intro reveal">
 
     <div>
 
@@ -884,12 +1779,16 @@
         01 — The North
       </div>
 
+
       <h2 class="section-title">
+
         A place<br>
         of contrasts.
+
       </h2>
 
     </div>
+
 
     <p class="intro-text">
 
@@ -911,7 +1810,10 @@
        DESTINATIONS
   ======================================================== -->
 
-  <section id="destinations">
+  <section
+    id="destinations"
+    class="reveal"
+  >
 
     <div class="destination-header">
 
@@ -921,12 +1823,16 @@
           02 — Destinations
         </div>
 
+
         <h2 class="section-title">
+
           Go beyond<br>
           the postcard.
+
         </h2>
 
       </div>
+
 
       <p class="destination-intro">
 
@@ -942,14 +1848,12 @@
     <div class="destination-grid">
 
 
-      <!-- BANGUI -->
-
       <article class="destination-card">
 
         <img
           src="https://commons.wikimedia.org/wiki/Special:FilePath/Bangui%20WindMills.jpg?width=2400"
           alt="Bangui Windmills in Ilocos Norte"
-          loading="eager"
+          loading="lazy"
         >
 
         <div class="destination-content">
@@ -972,13 +1876,11 @@
       </article>
 
 
-      <!-- PAGUDPUD -->
-
       <article class="destination-card">
 
         <img
           src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Sea%20wonders%20of%20Saud.jpg?width=1800"
-          alt="Saud Beach Pagudpud Ilocos Norte"
+          alt="Saud Beach in Pagudpud"
           loading="lazy"
         >
 
@@ -1002,13 +1904,11 @@
       </article>
 
 
-      <!-- PAOAY -->
-
       <article class="destination-card">
 
         <img
           src="https://commons.wikimedia.org/wiki/Special:FilePath/Paoay%20Church%20of%20Ilocos%20Norte%2C%20Philippines.JPG?width=1800"
-          alt="Paoay Church Ilocos Norte"
+          alt="Paoay Church in Ilocos Norte"
           loading="lazy"
         >
 
@@ -1032,13 +1932,11 @@
       </article>
 
 
-      <!-- PATAPAT -->
-
       <article class="destination-card">
 
         <img
           src="https://commons.wikimedia.org/wiki/Special:FilePath/Patapat%20Viaduct%20in%20Pagudpud.jpg?width=2000"
-          alt="Patapat Viaduct Pagudpud"
+          alt="Patapat Viaduct in Pagudpud"
           loading="lazy"
         >
 
@@ -1068,25 +1966,126 @@
 
 
   <!-- =======================================================
+       VIDEO
+  ======================================================== -->
+
+  <section
+    class="video-section reveal"
+    id="video"
+  >
+
+    <div class="video-header">
+
+      <div>
+
+        <div class="section-kicker">
+          03 — Watch the North
+        </div>
+
+
+        <h2 class="section-title">
+
+          See it.<br>
+          Feel it.
+
+        </h2>
+
+      </div>
+
+
+      <p>
+
+        Let the landscapes tell the story. Use a locally
+        hosted or properly licensed tourism film here for
+        the strongest and most reliable experience.
+
+      </p>
+
+    </div>
+
+
+    <div class="video-frame">
+
+      <div class="video-fallback"></div>
+
+
+      <!--
+        Replace this placeholder video with your
+        own licensed Ilocos Norte tourism video.
+
+        Recommended:
+        /videos/ilocos-norte-tourism.mp4
+      -->
+
+      <video
+        controls
+        muted
+        playsinline
+        preload="metadata"
+        poster="https://commons.wikimedia.org/wiki/Special:FilePath/Patapat%20Viaduct%20in%20Pagudpud.jpg?width=2200"
+        aria-label="Ilocos Norte tourism video"
+      >
+
+        <source
+          src="https://cdn.coverr.co/videos/coverr-aerial-view-of-the-sea-1574/1080p.mp4"
+          type="video/mp4"
+        >
+
+      </video>
+
+
+      <div class="video-caption">
+
+        <div class="section-kicker">
+          The North in motion
+        </div>
+
+
+        <h3>
+          From coastlines
+          to highlands.
+        </h3>
+
+
+        <p>
+          Replace this placeholder footage with your
+          official or licensed Ilocos Norte video.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
        EXPERIENCE
   ======================================================== -->
 
-  <section class="dark-section" id="experience">
+  <section
+    class="dark-section reveal"
+    id="experience"
+  >
 
     <div class="destination-header">
 
       <div>
 
         <div class="section-kicker">
-          03 — Experience
+          04 — Experience
         </div>
 
+
         <h2 class="section-title">
+
           Four ways to<br>
           feel the North.
+
         </h2>
 
       </div>
+
 
       <p class="destination-intro">
 
@@ -1179,32 +2178,195 @@
 
 
   <!-- =======================================================
+       DID YOU KNOW
+  ======================================================== -->
+
+  <section
+    class="trivia-section reveal"
+    id="trivia"
+  >
+
+    <div class="section-kicker">
+      05 — Did You Know?
+    </div>
+
+
+    <h2 class="section-title">
+
+      Stories behind<br>
+      the places.
+
+    </h2>
+
+
+    <div class="trivia-grid">
+
+
+      <article class="trivia-card">
+
+        <div class="fact-number">
+          01 — Bangui
+        </div>
+
+        <h3>
+          The windmills became one of the
+          defining images of Ilocos Norte.
+        </h3>
+
+        <p>
+          The turbines stand in a distinctive line along
+          Bangui Bay, making the coastline immediately
+          recognizable to travelers.
+        </p>
+
+      </article>
+
+
+      <article class="trivia-card">
+
+        <div class="fact-number">
+          02 — Paoay
+        </div>
+
+        <h3>
+          Paoay Church is known for its massive
+          earthquake-resistant design.
+        </h3>
+
+        <p>
+          Its broad buttresses and distinctive architecture
+          are closely associated with the Earthquake Baroque
+          tradition in the Philippines.
+        </p>
+
+      </article>
+
+
+      <article class="trivia-card">
+
+        <div class="fact-number">
+          03 — La Paz
+        </div>
+
+        <h3>
+          Ilocos Norte has a landscape that
+          can feel surprisingly desert-like.
+        </h3>
+
+        <p>
+          The La Paz Sand Dunes create a striking contrast
+          with the province's beaches, mountains and
+          historic towns.
+        </p>
+
+      </article>
+
+
+      <article class="trivia-card">
+
+        <div class="fact-number">
+          04 — Food
+        </div>
+
+        <h3>
+          Ilocano cuisine is known for bold flavors
+          and resourceful cooking.
+        </h3>
+
+        <p>
+          Bagnet, empanada, pinakbet and local vinegar
+          are among the flavors that make a northern
+          food journey memorable.
+        </p>
+
+      </article>
+
+
+      <article class="trivia-card">
+
+        <div class="fact-number">
+          05 — Cape Bojeador
+        </div>
+
+        <h3>
+          A historic lighthouse watches over
+          the northern coast.
+        </h3>
+
+        <p>
+          Cape Bojeador Lighthouse is one of the province's
+          best-known heritage landmarks and a reminder of
+          Ilocos Norte's long maritime history.
+        </p>
+
+      </article>
+
+
+      <article class="trivia-card">
+
+        <div class="fact-number">
+          06 — Patapat
+        </div>
+
+        <h3>
+          One road can turn into a destination
+          of its own.
+        </h3>
+
+        <p>
+          Patapat Viaduct follows the coastline between
+          mountain slopes and the sea, creating one of the
+          most memorable road views in the north.
+        </p>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
        FOOD
   ======================================================== -->
 
-  <section class="food" id="food">
+  <section
+    class="food reveal"
+    id="food"
+  >
 
     <div class="food-layout">
 
 
-      <div class="food-image"></div>
+      <div
+        class="food-image"
+        role="img"
+        aria-label="Scenic Saud Beach in Pagudpud"
+      ></div>
 
 
       <div class="food-copy">
 
         <div class="section-kicker">
-          04 — Taste
+          06 — Taste
         </div>
 
+
         <h2 class="section-title">
+
           Ilocano food<br>
           with character.
+
         </h2>
 
+
         <p>
+
           Bold, honest and deeply rooted in place.
           Make food part of the journey through
           Ilocos Norte.
+
         </p>
 
 
@@ -1286,21 +2448,434 @@
 
 
   <!-- =======================================================
+       PAGE 7 — SAMPLE TOUR PACKAGE
+  ======================================================== -->
+
+  <section
+    class="package-section reveal"
+    id="package"
+  >
+
+    <div class="package-top">
+
+      <div>
+
+        <div class="section-kicker">
+          07 — Sample Tour Package
+        </div>
+
+
+        <h2 class="section-title small">
+
+          Ilocos Norte<br>
+          Adventure Package
+
+        </h2>
+
+      </div>
+
+
+      <div class="package-meta">
+
+        3 Days · 2 Nights
+
+      </div>
+
+    </div>
+
+
+    <div class="package-days">
+
+
+      <article class="package-day">
+
+        <div class="day-number">
+          DAY 01
+        </div>
+
+
+        <h3>
+          Heritage & Culture
+        </h3>
+
+
+        <ul>
+
+          <li>
+            Paoay Church
+          </li>
+
+          <li>
+            Heritage attractions
+          </li>
+
+          <li>
+            Local food experience
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <article class="package-day">
+
+        <div class="day-number">
+          DAY 02
+        </div>
+
+
+        <h3>
+          Nature & Adventure
+        </h3>
+
+
+        <ul>
+
+          <li>
+            Bangui Windmills
+          </li>
+
+          <li>
+            Pagudpud
+          </li>
+
+          <li>
+            Kapurpurawan Rock Formation
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <article class="package-day">
+
+        <div class="day-number">
+          DAY 03
+        </div>
+
+
+        <h3>
+          Local Experience
+        </h3>
+
+
+        <ul>
+
+          <li>
+            Souvenir shopping
+          </li>
+
+          <li>
+            Local delicacies
+          </li>
+
+          <li>
+            Final sightseeing
+          </li>
+
+        </ul>
+
+      </article>
+
+
+    </div>
+
+
+    <div class="package-includes">
+
+      <div class="package-includes-title">
+        Package Includes
+      </div>
+
+
+      <div class="includes-grid">
+
+        <div class="include-item">
+          Accommodation
+        </div>
+
+        <div class="include-item">
+          Transportation assistance
+        </div>
+
+        <div class="include-item">
+          Guided sightseeing
+        </div>
+
+        <div class="include-item">
+          Selected attractions
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       PAGE 8 — PROMOTIONAL AD
+  ======================================================== -->
+
+  <section
+    class="promotion reveal"
+    id="promotion"
+  >
+
+    <div class="promotion-bg"></div>
+
+
+    <div class="promotion-content">
+
+      <div class="section-kicker">
+        08 — Discover the North
+      </div>
+
+
+      <h2>
+
+        YOUR NEXT ADVENTURE<br>
+        STARTS HERE.
+
+      </h2>
+
+
+      <div class="promotion-subtitle">
+        Discover Ilocos Norte
+      </div>
+
+
+      <div class="promotion-highlights">
+
+        <span>
+          Beautiful Beaches
+        </span>
+
+        <span>
+          Iconic Windmills
+        </span>
+
+        <span>
+          Rich Heritage
+        </span>
+
+        <span>
+          Delicious Cuisine
+        </span>
+
+        <span>
+          Natural Wonders
+        </span>
+
+      </div>
+
+
+      <a
+        href="#destinations"
+        class="button button-light"
+      >
+        Explore · Experience · Enjoy
+      </a>
+
+
+      <p
+        style="
+          margin-top:22px;
+          font-size:11px;
+          letter-spacing:.12em;
+          opacity:.72;
+        "
+      >
+        #DiscoverIlocosNorte
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       PAGE 9 — TRAVEL INFORMATION
+  ======================================================== -->
+
+  <section
+    class="plan reveal"
+    id="plan"
+  >
+
+    <div class="section-kicker">
+      09 — Travel Information
+    </div>
+
+
+    <h2 class="section-title">
+      Plan Your Visit
+    </h2>
+
+
+    <p class="section-lead">
+
+      Travel prepared, respect the places you visit,
+      and leave room for the unexpected discoveries
+      that make a northern journey memorable.
+
+    </p>
+
+
+    <div class="plan-grid">
+
+
+      <article class="plan-card">
+
+        <h3>
+          What to Prepare
+        </h3>
+
+
+        <ul class="plan-list">
+
+          <li>
+            Comfortable clothing suitable for walking
+            and outdoor activities
+          </li>
+
+          <li>
+            Phone or camera for photographs and navigation
+          </li>
+
+          <li>
+            Personal essentials and any required medications
+          </li>
+
+          <li>
+            Drinking water, especially for outdoor excursions
+          </li>
+
+          <li>
+            Extra budget for meals, entrance fees and souvenirs
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <article class="plan-card">
+
+        <h3>
+          Travel Tips
+        </h3>
+
+
+        <ul class="plan-list">
+
+          <li>
+            Respect local culture, communities
+            and heritage sites.
+          </li>
+
+          <li>
+            Keep beaches, viewpoints and tourist
+            areas clean.
+          </li>
+
+          <li>
+            Follow local rules, posted safety instructions
+            and site guidelines.
+          </li>
+
+          <li>
+            Support local restaurants, guides, shops
+            and community businesses.
+          </li>
+
+          <li>
+            Check current road, weather and attraction
+            conditions before traveling.
+          </li>
+
+        </ul>
+
+      </article>
+
+
+    </div>
+
+
+    <div class="plan-extra">
+
+
+      <article>
+
+        <h4>
+          Best Time to Visit
+        </h4>
+
+        <p>
+          Check the latest local weather forecast before
+          your trip and plan outdoor activities with
+          conditions in mind.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <h4>
+          Getting Around
+        </h4>
+
+        <p>
+          Plan transportation between attractions in advance,
+          especially when combining destinations across
+          different municipalities.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <h4>
+          Travel Responsibly
+        </h4>
+
+        <p>
+          Protect the landscapes you came to see and
+          choose local businesses whenever possible.
+        </p>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
        FINAL CTA
   ======================================================== -->
 
-  <section class="cta" id="journey">
+  <section class="cta reveal">
 
     <div>
 
       <div class="section-kicker">
-        05 — Your Journey
+        The Journey Continues
       </div>
 
+
       <h2>
+
         Take the long way<br>
         to the North.
+
       </h2>
+
 
       <a
         href="#destinations"
@@ -1308,6 +2883,93 @@
       >
         Start Exploring
       </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       PAGE 10 — CONTACT / END
+  ======================================================== -->
+
+  <section
+    class="contact-end reveal"
+    id="contact"
+  >
+
+    <div class="contact-content">
+
+      <div class="section-kicker">
+        10 — Contact / End Page
+      </div>
+
+
+      <h2>
+
+        READY TO DISCOVER<br>
+        ILOCOS NORTE?
+
+      </h2>
+
+
+      <p class="contact-description">
+
+        Your adventure, cultural experience,
+        and unforgettable memories are waiting.
+
+      </p>
+
+
+      <div class="contact-details">
+
+        <span>
+          Ilocos Norte, Philippines
+        </span>
+
+
+        <a href="mailto:discoverilocosnorte@gmail.com">
+
+          discoverilocosnorte@gmail.com
+
+        </a>
+
+
+        <a
+          href="#"
+          aria-label="Discover Ilocos Norte Facebook"
+        >
+          Facebook — Discover Ilocos Norte
+        </a>
+
+
+        <a
+          href="#"
+          aria-label="Discover Ilocos Norte Instagram"
+        >
+          Instagram — @DiscoverIlocosNorte
+        </a>
+
+      </div>
+
+
+      <a
+        href="#destinations"
+        class="button button-light"
+      >
+        Explore Ilocos Norte Today
+      </a>
+
+
+      <p
+        style="
+          margin-top:30px;
+          color:rgba(255,255,255,.65);
+          font-size:12px;
+        "
+      >
+        Thank you for discovering the North.
+      </p>
 
     </div>
 
@@ -1323,6 +2985,7 @@
     <div class="footer-brand">
       Discover Ilocos Norte
     </div>
+
 
     <div class="footer-info">
 
@@ -1356,22 +3019,165 @@
 
   <script>
 
+    /* =====================================================
+       NAVBAR SCROLL EFFECT
+    ===================================================== */
+
     const navbar =
       document.getElementById("navbar");
 
-    window.addEventListener("scroll", () => {
 
-      if (window.scrollY > 50) {
+    window.addEventListener(
+      "scroll",
+      () => {
 
-        navbar.classList.add("scrolled");
+        if (window.scrollY > 50) {
 
-      } else {
+          navbar.classList.add("scrolled");
 
-        navbar.classList.remove("scrolled");
+        } else {
+
+          navbar.classList.remove("scrolled");
+
+        }
+
+      },
+      { passive: true }
+    );
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+
+    menuToggle.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          navLinks.classList.toggle("open");
+
+
+        document.body.classList.toggle(
+          "menu-open",
+          isOpen
+        );
+
+
+        menuToggle.textContent =
+          isOpen ? "Close" : "Menu";
+
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
 
       }
+    );
 
-    });
+
+    navLinks
+      .querySelectorAll("a")
+      .forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            navLinks.classList.remove("open");
+
+            document.body.classList.remove(
+              "menu-open"
+            );
+
+            menuToggle.textContent =
+              "Menu";
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
+
+      });
+
+
+    /* =====================================================
+       SCROLL REVEAL ANIMATION
+    ===================================================== */
+
+    const revealItems =
+      document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        (entries, observer) => {
+
+          entries.forEach(
+            (entry) => {
+
+              if (entry.isIntersecting) {
+
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealItems.forEach(
+      (item) => {
+
+        revealObserver.observe(item);
+
+      }
+    );
+
+
+    /* =====================================================
+       VIDEO FALLBACK
+    ===================================================== */
+
+    document
+      .querySelectorAll("video")
+      .forEach((video) => {
+
+        video.addEventListener(
+          "error",
+          () => {
+
+            video.style.display =
+              "none";
+
+          }
+        );
+
+      });
+
 
   </script>
 
