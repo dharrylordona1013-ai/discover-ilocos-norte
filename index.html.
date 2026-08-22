@@ -1,1379 +1,1904 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-
-  <title>Discover Ilocos Norte | Where the North Comes Alive</title>
-
-  <meta
-    name="description"
-    content="Discover Ilocos Norte — heritage, dramatic coastlines, wind-swept landscapes, unforgettable adventures and authentic Ilocano flavors."
-  />
-
-  <meta
-    name="keywords"
-    content="Ilocos Norte, tourism, Pagudpud, Bangui Windmills, Paoay Church, Laoag, Ilocos Norte travel, Philippines"
-  />
-
-  <meta name="theme-color" content="#151512" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-    rel="stylesheet"
-  />
-
-  <style>
-
-    /* =========================================================
-       RESET
-    ========================================================= */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "DM Sans", sans-serif;
-      background: #f4f0e7;
-      color: #171714;
-      line-height: 1.6;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    /* =========================================================
-       VARIABLES
-    ========================================================= */
-
-    :root {
-      --black: #171714;
-      --dark: #11110f;
-      --cream: #f4f0e7;
-      --cream-light: #fbf9f3;
-      --gold: #b18a4a;
-      --gold-light: #d7bd89;
-      --muted: #716d64;
-      --white: #ffffff;
-      --line: rgba(23, 23, 20, 0.14);
-    }
-
-    /* =========================================================
-       NAVIGATION
-    ========================================================= */
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 22px 6vw;
-
-      color: white;
-
-      transition:
-        background 0.3s ease,
-        padding 0.3s ease,
-        backdrop-filter 0.3s ease;
-    }
-
-    .navbar.scrolled {
-      background: rgba(17, 17, 15, 0.94);
-      backdrop-filter: blur(15px);
-      padding: 14px 6vw;
-    }
-
-    .logo {
-      font-family: "Playfair Display", serif;
-      font-size: 21px;
-      font-weight: 600;
-      line-height: 1;
-    }
-
-    .logo small {
-      display: block;
-      margin-bottom: 5px;
-
-      font-family: "DM Sans", sans-serif;
-      font-size: 8px;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-
-      color: var(--gold-light);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Discover Ilocos Norte — The North, Unfolded</title>
+
+<meta name="description"
+content="Discover Ilocos Norte — dramatic coastlines, timeless heritage, wind-swept landscapes and authentic Ilocano culture.">
+
+<meta name="theme-color" content="#11110f">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
 
-    .nav-links {
-      display: flex;
-      gap: 30px;
+:root{
+  --black:#11110f;
+  --ink:#191916;
+  --cream:#f4f0e7;
+  --cream2:#fbf9f3;
+  --gold:#b18a4a;
+  --gold2:#ddc38e;
+  --white:#fff;
+  --muted:#777268;
+  --line:rgba(25,25,22,.14);
 
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .nav-links a {
-      transition: color 0.25s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold-light);
-    }
+  --serif:"Playfair Display",serif;
+  --sans:"DM Sans",sans-serif;
+}
 
-    /* =========================================================
-       HERO
-    ========================================================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    .hero {
-      position: relative;
+html{
+  scroll-behavior:smooth;
+}
 
-      min-height: 100vh;
-      min-height: 100svh;
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  overflow-x:hidden;
+}
 
-      display: flex;
-      align-items: flex-end;
+body.loading{
+  overflow:hidden;
+}
 
-      padding: 0 7vw 11vh;
-
-      color: white;
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-      background:
-        linear-gradient(
-          90deg,
-          rgba(7, 9, 8, 0.76) 0%,
-          rgba(7, 9, 8, 0.42) 45%,
-          rgba(7, 9, 8, 0.12) 100%
-        ),
-        url("https://commons.wikimedia.org/wiki/Special:FilePath/Bangui%20WindMills.jpg?width=2400")
-        center center / cover no-repeat;
-    }
-
-    .hero::after {
-      content: "";
-
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-
-      height: 35%;
+img{
+  display:block;
+  width:100%;
+}
 
-      background: linear-gradient(
-        transparent,
-        rgba(10, 10, 8, 0.65)
-      );
-    }
+/* =========================================================
+   PRELOADER
+========================================================= */
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
+.preloader{
+  position:fixed;
+  inset:0;
+  z-index:9999;
 
-      max-width: 900px;
-    }
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    .eyebrow {
-      color: var(--gold-light);
+  background:var(--black);
+  color:white;
 
-      font-size: 11px;
-      font-weight: 700;
+  transition:
+    opacity 1s cubic-bezier(.77,0,.18,1),
+    visibility 1s;
+}
 
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-    }
+.preloader.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
 
-    .hero h1 {
-      margin: 18px 0 25px;
+.loader-inner{
+  text-align:center;
+}
 
-      font-family: "Playfair Display", serif;
-      font-size: clamp(60px, 9vw, 132px);
-      font-weight: 600;
-      line-height: 0.88;
+.loader-small{
+  color:var(--gold2);
 
-      letter-spacing: -0.055em;
-    }
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.35em;
+  text-transform:uppercase;
 
-    .hero-description {
-      max-width: 610px;
+  opacity:0;
 
-      margin-bottom: 32px;
+  animation:fadeUp .8s .2s forwards;
+}
 
-      color: rgba(255, 255, 255, 0.84);
+.loader-title{
+  margin-top:15px;
 
-      font-size: 18px;
-      line-height: 1.7;
-    }
+  font-family:var(--serif);
+  font-size:42px;
+  font-weight:500;
 
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+  opacity:0;
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+  animation:fadeUp 1s .4s forwards;
+}
 
-      padding: 14px 23px;
+.loader-line{
+  width:0;
+  height:1px;
 
-      border: 1px solid rgba(255,255,255,0.55);
+  margin:25px auto 0;
 
-      font-size: 11px;
-      font-weight: 700;
+  background:var(--gold);
 
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
+  animation:loaderLine 1.6s .5s forwards;
+}
 
-      transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        border 0.25s ease,
-        transform 0.25s ease;
-    }
+@keyframes loaderLine{
+  to{
+    width:150px;
+  }
+}
 
-    .button:hover {
-      transform: translateY(-2px);
-    }
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-    .button-light {
-      background: white;
-      border-color: white;
-      color: var(--black);
-    }
+.navbar{
+  position:fixed;
+  z-index:1000;
 
-    .button-outline {
-      color: white;
-    }
+  top:0;
+  left:0;
+  right:0;
 
-    .button-outline:hover {
-      background: white;
-      color: var(--black);
-    }
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-    .scroll-indicator {
-      position: absolute;
+  padding:25px 6vw;
 
-      right: 5vw;
-      bottom: 45px;
+  color:white;
 
-      z-index: 3;
+  transition:
+    background .5s ease,
+    padding .5s ease,
+    backdrop-filter .5s ease;
+}
 
-      writing-mode: vertical-rl;
+.navbar.scrolled{
+  padding:14px 6vw;
 
-      font-size: 9px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
+  background:rgba(17,17,15,.93);
 
-      opacity: 0.7;
-    }
+  backdrop-filter:blur(18px);
+}
 
-    /* =========================================================
-       GENERAL SECTION
-    ========================================================= */
+.logo{
+  font-family:var(--serif);
+  font-size:21px;
+  line-height:1;
+}
 
-    section {
-      padding: 110px 7vw;
-    }
+.logo small{
+  display:block;
 
-    .section-kicker {
-      color: var(--gold);
+  margin-bottom:5px;
 
-      font-size: 10px;
-      font-weight: 700;
+  color:var(--gold2);
 
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-    }
+  font-family:var(--sans);
+  font-size:8px;
+  font-weight:700;
 
-    .section-title {
-      margin-top: 15px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+}
 
-      font-family: "Playfair Display", serif;
-      font-size: clamp(44px, 6vw, 78px);
-      font-weight: 600;
-      line-height: 1;
+.nav-links{
+  display:flex;
+  gap:32px;
 
-      letter-spacing: -0.035em;
-    }
+  font-size:10px;
+  font-weight:600;
 
-    /* =========================================================
-       INTRO
-    ========================================================= */
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
 
-    .intro {
-      display: grid;
-      grid-template-columns: 0.85fr 1.2fr;
+.nav-links a{
+  position:relative;
+  padding-bottom:5px;
+}
 
-      gap: 9vw;
+.nav-links a::after{
+  content:"";
 
-      background: var(--cream-light);
-    }
+  position:absolute;
 
-    .intro-text {
-      max-width: 700px;
+  left:0;
+  right:100%;
+  bottom:0;
 
-      align-self: end;
+  height:1px;
 
-      color: var(--muted);
+  background:var(--gold2);
 
-      font-size: 18px;
-      line-height: 1.8;
-    }
+  transition:right .35s ease;
+}
 
-    /* =========================================================
-       DESTINATIONS
-    ========================================================= */
+.nav-links a:hover::after{
+  right:0;
+}
 
-    .destination-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+/* =========================================================
+   HERO
+========================================================= */
 
-      gap: 40px;
+.hero{
+  position:relative;
 
-      margin-bottom: 45px;
-    }
+  min-height:100svh;
 
-    .destination-intro {
-      max-width: 440px;
+  display:flex;
+  align-items:flex-end;
 
-      color: var(--muted);
-      font-size: 15px;
-    }
+  padding:0 7vw 11vh;
 
-    .destination-grid {
-      display: grid;
+  overflow:hidden;
 
-      grid-template-columns: repeat(12, 1fr);
+  color:white;
 
-      gap: 18px;
-    }
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,7,6,.8),
+      rgba(5,7,6,.35) 55%,
+      rgba(5,7,6,.12)
+    ),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Bangui%20WindMills.jpg?width=2400")
+    center/cover no-repeat;
+}
 
-    .destination-card {
-      position: relative;
+/* slow cinematic movement */
 
-      overflow: hidden;
+.hero::before{
+  content:"";
 
-      min-height: 500px;
+  position:absolute;
+  inset:-5%;
 
-      background: #ddd;
-    }
+  background:
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Bangui%20WindMills.jpg?width=2400")
+    center/cover no-repeat;
 
-    .destination-card:nth-child(1) {
-      grid-column: span 7;
-    }
+  z-index:-1;
 
-    .destination-card:nth-child(2) {
-      grid-column: span 5;
-    }
+  animation:heroZoom 12s ease-out forwards;
+}
 
-    .destination-card:nth-child(3) {
-      grid-column: span 5;
-    }
+@keyframes heroZoom{
+  from{
+    transform:scale(1.08);
+  }
 
-    .destination-card:nth-child(4) {
-      grid-column: span 7;
-    }
+  to{
+    transform:scale(1);
+  }
+}
 
-    .destination-card img {
-      position: absolute;
-      inset: 0;
+.hero::after{
+  content:"";
 
-      width: 100%;
-      height: 100%;
+  position:absolute;
+  inset:45% 0 0;
 
-      object-fit: cover;
+  background:
+    linear-gradient(
+      transparent,
+      rgba(5,5,4,.78)
+    );
+}
 
-      transition: transform 0.9s ease;
-    }
+.hero-content{
+  position:relative;
+  z-index:3;
 
-    .destination-card:hover img {
-      transform: scale(1.06);
-    }
+  max-width:950px;
+}
 
-    .destination-card::after {
-      content: "";
+.hero-eyebrow{
+  overflow:hidden;
+}
 
-      position: absolute;
-      inset: 25% 0 0;
+.hero-eyebrow span{
+  display:inline-block;
 
-      background: linear-gradient(
-        transparent,
-        rgba(0,0,0,0.82)
-      );
-    }
+  color:var(--gold2);
 
-    .destination-content {
-      position: absolute;
+  font-size:10px;
+  font-weight:700;
 
-      z-index: 2;
+  letter-spacing:.32em;
+  text-transform:uppercase;
 
-      left: 30px;
-      right: 30px;
-      bottom: 27px;
+  opacity:0;
+  transform:translateY(100%);
 
-      color: white;
-    }
+  animation:revealText 1s 1.5s cubic-bezier(.16,1,.3,1) forwards;
+}
 
-    .destination-location {
-      color: var(--gold-light);
+.hero h1{
+  overflow:hidden;
 
-      font-size: 10px;
-      font-weight: 700;
+  margin:18px 0 25px;
 
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
+  font-family:var(--serif);
+  font-size:clamp(62px,9vw,135px);
+  font-weight:600;
 
-    .destination-content h3 {
-      margin: 7px 0;
+  line-height:.86;
+  letter-spacing:-.06em;
+}
 
-      font-family: "Playfair Display", serif;
+.hero h1 span{
+  display:block;
 
-      font-size: 35px;
-      font-weight: 600;
-      line-height: 1;
-    }
+  opacity:0;
+  transform:translateY(100%);
 
-    .destination-content p {
-      max-width: 500px;
+  animation:revealText 1.3s cubic-bezier(.16,1,.3,1) forwards;
+}
 
-      color: rgba(255,255,255,0.78);
+.hero h1 span:nth-child(2){
+  animation-delay:.18s;
+}
 
-      font-size: 13px;
-    }
+.hero-description{
+  max-width:590px;
 
-    /* =========================================================
-       EXPERIENCE
-    ========================================================= */
+  color:rgba(255,255,255,.82);
 
-    .dark-section {
-      background: var(--dark);
-      color: white;
-    }
+  font-size:17px;
+  line-height:1.8;
 
-    .dark-section .destination-intro {
-      color: #aaa;
-    }
+  opacity:0;
+  transform:translateY(30px);
 
-    .experience-grid {
-      display: grid;
+  animation:fadeUp 1s 2s forwards;
+}
 
-      grid-template-columns: repeat(4, 1fr);
+.hero-buttons{
+  display:flex;
+  gap:12px;
 
-      margin-top: 50px;
+  margin-top:30px;
 
-      border-top: 1px solid rgba(255,255,255,0.15);
-    }
+  opacity:0;
+  transform:translateY(25px);
 
-    .experience {
-      min-height: 270px;
+  animation:fadeUp 1s 2.2s forwards;
+}
 
-      padding: 28px 28px 25px 0;
+.button{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
 
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-    }
+  min-width:165px;
 
-    .experience + .experience {
-      padding-left: 28px;
+  padding:14px 22px;
 
-      border-left: 1px solid rgba(255,255,255,0.15);
-    }
+  border:1px solid rgba(255,255,255,.55);
 
-    .experience-number {
-      color: var(--gold-light);
+  font-size:10px;
+  font-weight:700;
 
-      font-size: 11px;
-      letter-spacing: 0.15em;
-    }
+  letter-spacing:.14em;
+  text-transform:uppercase;
 
-    .experience h3 {
-      margin: 22px 0 10px;
+  transition:
+    background .3s,
+    color .3s,
+    transform .3s;
+}
 
-      font-family: "Playfair Display", serif;
-      font-size: 27px;
-      font-weight: 500;
-    }
+.button:hover{
+  transform:translateY(-3px);
+}
 
-    .experience p {
-      color: #999;
+.button-light{
+  background:white;
+  border-color:white;
+  color:var(--black);
+}
 
-      font-size: 14px;
-      line-height: 1.8;
-    }
+.button-outline{
+  color:white;
+}
 
-    /* =========================================================
-       FOOD
-    ========================================================= */
+.button-outline:hover{
+  background:white;
+  color:var(--black);
+}
 
-    .food {
-      background: #e9e2d4;
-    }
+.hero-scroll{
+  position:absolute;
 
-    .food-layout {
-      display: grid;
+  right:5vw;
+  bottom:45px;
 
-      grid-template-columns: 1.05fr 1fr;
+  z-index:4;
 
-      gap: 8vw;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
 
-      align-items: center;
-    }
+  font-size:8px;
+  letter-spacing:.25em;
+  text-transform:uppercase;
 
-    .food-image {
-      height: 650px;
+  opacity:0;
+  animation:fadeIn 1s 2.7s forwards;
+}
 
-      background:
-        linear-gradient(
-          rgba(0,0,0,0.05),
-          rgba(0,0,0,0.2)
-        ),
-        url("https://commons.wikimedia.org/wiki/Special:FilePath/The%20Sea%20wonders%20of%20Saud.jpg?width=1800")
-        center / cover no-repeat;
-    }
+.scroll-line{
+  width:1px;
+  height:70px;
 
-    .food-copy p {
-      max-width: 560px;
+  overflow:hidden;
 
-      margin: 25px 0 35px;
+  background:rgba(255,255,255,.25);
+}
 
-      color: var(--muted);
-    }
+.scroll-line::after{
+  content:"";
 
-    .food-list {
-      border-top: 1px solid var(--line);
-    }
+  display:block;
 
-    .dish {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
+  width:100%;
+  height:35%;
 
-      padding: 18px 0;
+  background:white;
 
-      border-bottom: 1px solid var(--line);
-    }
+  animation:scrollLine 2s infinite;
+}
 
-    .dish strong {
-      font-family: "Playfair Display", serif;
-      font-size: 17px;
-    }
+@keyframes scrollLine{
+  from{
+    transform:translateY(-100%);
+  }
 
-    .dish span {
-      color: var(--muted);
+  to{
+    transform:translateY(300%);
+  }
+}
 
-      font-size: 11px;
-    }
+/* =========================================================
+   REVEAL ANIMATIONS
+========================================================= */
 
-    /* =========================================================
-       CTA
-    ========================================================= */
+.reveal{
+  opacity:0;
+  transform:translateY(55px);
 
-    .cta {
-      min-height: 68vh;
+  transition:
+    opacity 1s cubic-bezier(.16,1,.3,1),
+    transform 1s cubic-bezier(.16,1,.3,1);
+}
 
-      display: grid;
-      place-items: center;
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
 
-      text-align: center;
+.reveal-delay-1{
+  transition-delay:.12s;
+}
 
-      color: white;
+.reveal-delay-2{
+  transition-delay:.24s;
+}
 
-      background:
-        linear-gradient(
-          rgba(10,10,8,0.56),
-          rgba(10,10,8,0.72)
-        ),
-        url("https://commons.wikimedia.org/wiki/Special:FilePath/Kapurpurawan%20Rock%20Formation%2C%20Ilocos%20Norte%20%2816016349609%29.jpg?width=2400")
-        center / cover no-repeat;
-    }
+.reveal-delay-3{
+  transition-delay:.36s;
+}
 
-    .cta .section-kicker {
-      color: var(--gold-light);
-    }
+@keyframes revealText{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
 
-    .cta h2 {
-      max-width: 950px;
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
 
-      margin: 15px auto 30px;
+@keyframes fadeIn{
+  to{
+    opacity:1;
+  }
+}
 
-      font-family: "Playfair Display", serif;
+/* =========================================================
+   SECTIONS
+========================================================= */
 
-      font-size: clamp(48px, 7vw, 94px);
-      font-weight: 600;
-      line-height: 0.95;
+section{
+  padding:115px 7vw;
+}
 
-      letter-spacing: -0.045em;
-    }
+.kicker{
+  color:var(--gold);
 
-    /* =========================================================
-       FOOTER
-    ========================================================= */
+  font-size:10px;
+  font-weight:700;
 
-    footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+}
 
-      padding: 45px 7vw;
+.title{
+  margin-top:15px;
 
-      background: #0e0e0c;
+  font-family:var(--serif);
+  font-size:clamp(45px,6vw,80px);
+  font-weight:600;
 
-      color: #888;
+  line-height:.98;
 
-      font-size: 11px;
-    }
+  letter-spacing:-.04em;
+}
 
-    .footer-brand {
-      color: white;
+/* =========================================================
+   INTRO
+========================================================= */
 
-      font-family: "Playfair Display", serif;
+.intro{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
 
-      font-size: 20px;
-    }
+  gap:9vw;
 
-    .footer-info {
-      max-width: 650px;
+  background:var(--cream2);
+}
 
-      text-align: right;
+.intro-copy{
+  max-width:700px;
 
-      line-height: 1.8;
-    }
+  align-self:end;
 
-    .footer-info a {
-      color: var(--gold-light);
-      text-decoration: underline;
-    }
+  color:var(--muted);
 
-    /* =========================================================
-       MOBILE
-    ========================================================= */
+  font-size:18px;
+  line-height:1.9;
+}
 
-    @media (max-width: 850px) {
+/* =========================================================
+   DESTINATIONS
+========================================================= */
 
-      .navbar {
-        padding: 18px 6vw;
-      }
+.destination-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
 
-      .nav-links {
-        display: none;
-      }
+  gap:40px;
 
-      .hero {
-        padding: 0 6vw 10vh;
-      }
+  margin-bottom:48px;
+}
 
-      .hero h1 {
-        font-size: clamp(58px, 17vw, 88px);
-      }
+.destination-description{
+  max-width:430px;
 
-      .hero-description {
-        font-size: 15px;
-      }
+  color:var(--muted);
 
-      .scroll-indicator {
-        display: none;
-      }
+  font-size:14px;
+  line-height:1.8;
+}
 
-      section {
-        padding: 75px 6vw;
-      }
+.destination-grid{
+  display:grid;
 
-      .intro {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
+  grid-template-columns:repeat(12,1fr);
 
-      .intro-text {
-        font-size: 16px;
-      }
+  gap:18px;
+}
 
-      .destination-header {
-        display: block;
-      }
+.destination-card{
+  position:relative;
 
-      .destination-intro {
-        margin-top: 25px;
-      }
+  overflow:hidden;
 
-      .destination-grid {
-        display: block;
-      }
+  min-height:510px;
 
-      .destination-card {
-        min-height: 430px;
+  cursor:pointer;
 
-        margin-bottom: 15px;
-      }
+  background:#ccc;
+}
 
-      .experience-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+.destination-card:nth-child(1){
+  grid-column:span 7;
+}
 
-      .experience {
-        min-height: 250px;
-      }
+.destination-card:nth-child(2){
+  grid-column:span 5;
+}
 
-      .experience + .experience {
-        padding-left: 20px;
-      }
+.destination-card:nth-child(3){
+  grid-column:span 5;
+}
 
-      .experience:nth-child(3) {
-        padding-left: 0;
-        border-left: none;
-      }
+.destination-card:nth-child(4){
+  grid-column:span 7;
+}
 
-      .food-layout {
-        grid-template-columns: 1fr;
-      }
+.destination-image{
+  position:absolute;
+  inset:0;
 
-      .food-image {
-        height: 430px;
-      }
+  width:100%;
+  height:100%;
 
-      .cta {
-        min-height: 60vh;
-      }
+  object-fit:cover;
 
-      footer {
-        display: block;
-      }
+  transition:
+    transform 1.2s cubic-bezier(.16,1,.3,1),
+    filter .7s;
+}
 
-      .footer-info {
-        margin-top: 20px;
-        text-align: left;
-      }
-    }
+.destination-card:hover .destination-image{
+  transform:scale(1.07);
 
-    @media (max-width: 500px) {
+  filter:saturate(1.1);
+}
 
-      .experience-grid {
-        grid-template-columns: 1fr;
-      }
+.destination-overlay{
+  position:absolute;
+  inset:0;
 
-      .experience,
-      .experience + .experience,
-      .experience:nth-child(3) {
-        padding: 25px 0;
+  background:
+    linear-gradient(
+      transparent 30%,
+      rgba(0,0,0,.82)
+    );
+}
 
-        border-left: none;
-      }
+.destination-content{
+  position:absolute;
 
-      .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
+  z-index:2;
 
-      .button {
-        text-align: center;
-      }
+  left:30px;
+  right:30px;
+  bottom:27px;
 
-    }
+  color:white;
+}
 
-  </style>
+.location{
+  color:var(--gold2);
+
+  font-size:9px;
+  font-weight:700;
+
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+
+.destination-content h3{
+  margin:7px 0;
+
+  font-family:var(--serif);
+  font-size:35px;
+  font-weight:600;
+
+  line-height:1;
+}
+
+.destination-content p{
+  color:rgba(255,255,255,.75);
+
+  font-size:13px;
+}
+
+.card-number{
+  position:absolute;
+
+  z-index:3;
+
+  top:22px;
+  right:25px;
+
+  color:white;
+
+  font-family:var(--serif);
+  font-size:13px;
+
+  opacity:.75;
+}
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
+.dark{
+  background:var(--black);
+  color:white;
+}
+
+.dark .destination-description{
+  color:#999;
+}
+
+.experience-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+
+  margin-top:55px;
+
+  border-top:1px solid rgba(255,255,255,.14);
+}
+
+.experience{
+  min-height:280px;
+
+  padding:30px 28px 25px 0;
+
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+
+.experience + .experience{
+  padding-left:28px;
+
+  border-left:1px solid rgba(255,255,255,.14);
+}
+
+.exp-number{
+  color:var(--gold2);
+
+  font-size:10px;
+
+  letter-spacing:.2em;
+}
+
+.experience h3{
+  margin:22px 0 10px;
+
+  font-family:var(--serif);
+  font-size:27px;
+  font-weight:500;
+}
+
+.experience p{
+  color:#96948e;
+
+  font-size:13px;
+  line-height:1.8;
+}
+
+/* =========================================================
+   FOOD
+========================================================= */
+
+.food{
+  background:#e9e2d4;
+}
+
+.food-layout{
+  display:grid;
+
+  grid-template-columns:1.05fr 1fr;
+
+  gap:8vw;
+
+  align-items:center;
+}
+
+.food-image-wrap{
+  position:relative;
+
+  overflow:hidden;
+
+  height:650px;
+}
+
+.food-image{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  transition:transform 1.2s cubic-bezier(.16,1,.3,1);
+}
+
+.food-image-wrap:hover .food-image{
+  transform:scale(1.04);
+}
+
+.food-copy p{
+  max-width:560px;
+
+  margin:25px 0 35px;
+
+  color:var(--muted);
+}
+
+.food-list{
+  border-top:1px solid var(--line);
+}
+
+.dish{
+  display:flex;
+  justify-content:space-between;
+
+  padding:18px 0;
+
+  border-bottom:1px solid var(--line);
+}
+
+.dish strong{
+  font-family:var(--serif);
+  font-size:17px;
+}
+
+.dish span{
+  color:var(--muted);
+
+  font-size:10px;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta{
+  position:relative;
+
+  min-height:70vh;
+
+  display:grid;
+  place-items:center;
+
+  text-align:center;
+
+  overflow:hidden;
+
+  color:white;
+}
+
+.cta-bg{
+  position:absolute;
+  inset:-5%;
+
+  background:
+    linear-gradient(
+      rgba(8,8,7,.58),
+      rgba(8,8,7,.75)
+    ),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Kapurpurawan%20Rock%20Formation%2C%20Ilocos%20Norte%20%2816016349609%29.jpg?width=2400")
+    center/cover no-repeat;
+
+  transition:transform .2s linear;
+}
+
+.cta-content{
+  position:relative;
+  z-index:2;
+}
+
+.cta h2{
+  max-width:950px;
+
+  margin:15px auto 30px;
+
+  font-family:var(--serif);
+  font-size:clamp(50px,7vw,95px);
+  font-weight:600;
+
+  line-height:.94;
+  letter-spacing:-.05em;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  display:flex;
+  justify-content:space-between;
+
+  gap:30px;
+
+  padding:48px 7vw;
+
+  background:#0d0d0b;
+
+  color:#777;
+
+  font-size:10px;
+}
+
+.footer-brand{
+  color:white;
+
+  font-family:var(--serif);
+  font-size:20px;
+}
+
+.footer-info{
+  max-width:650px;
+
+  text-align:right;
+
+  line-height:1.9;
+}
+
+.footer-info a{
+  color:var(--gold2);
+
+  text-decoration:underline;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:850px){
+
+  .navbar{
+    padding:18px 6vw;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero{
+    padding:0 6vw 11vh;
+  }
+
+  .hero h1{
+    font-size:clamp(60px,17vw,90px);
+  }
+
+  .hero-description{
+    font-size:15px;
+  }
+
+  .hero-scroll{
+    display:none;
+  }
+
+  section{
+    padding:80px 6vw;
+  }
+
+  .intro{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .intro-copy{
+    font-size:16px;
+  }
+
+  .destination-header{
+    display:block;
+  }
+
+  .destination-description{
+    margin-top:25px;
+  }
+
+  .destination-grid{
+    display:block;
+  }
+
+  .destination-card{
+    min-height:430px;
+
+    margin-bottom:15px;
+  }
+
+  .experience-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .experience{
+    min-height:250px;
+  }
+
+  .food-layout{
+    grid-template-columns:1fr;
+  }
+
+  .food-image-wrap{
+    height:430px;
+  }
+
+  .cta{
+    min-height:60vh;
+  }
+
+  footer{
+    display:block;
+  }
+
+  .footer-info{
+    margin-top:20px;
+
+    text-align:left;
+  }
+}
+
+@media(max-width:500px){
+
+  .hero-buttons{
+    flex-direction:column;
+  }
+
+  .button{
+    width:100%;
+  }
+
+  .experience-grid{
+    grid-template-columns:1fr;
+  }
+
+  .experience,
+  .experience + .experience{
+    padding:25px 0;
+
+    border-left:none;
+  }
+
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+
+}
+
+</style>
 </head>
 
-<body>
 
-  <!-- =======================================================
-       NAVIGATION
-  ======================================================== -->
+<body class="loading">
 
-  <nav class="navbar" id="navbar">
 
-    <a href="#" class="logo">
-      <small>Province of</small>
+<!-- =======================================================
+     PRELOADER
+======================================================== -->
+
+<div class="preloader" id="preloader">
+
+  <div class="loader-inner">
+
+    <div class="loader-small">
+      A destination in the North
+    </div>
+
+    <div class="loader-title">
       Ilocos Norte
+    </div>
+
+    <div class="loader-line"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     NAV
+======================================================== -->
+
+<nav class="navbar" id="navbar">
+
+  <a href="#" class="logo">
+
+    <small>Province of</small>
+
+    Ilocos Norte
+
+  </a>
+
+
+  <div class="nav-links">
+
+    <a href="#destinations">
+      Destinations
     </a>
 
-    <div class="nav-links">
-      <a href="#destinations">Destinations</a>
-      <a href="#experience">Experience</a>
-      <a href="#food">Taste</a>
-      <a href="#journey">Journey</a>
-    </div>
+    <a href="#experience">
+      Experience
+    </a>
 
-  </nav>
+    <a href="#food">
+      Taste
+    </a>
+
+    <a href="#journey">
+      Journey
+    </a>
+
+  </div>
+
+</nav>
 
 
-  <!-- =======================================================
-       HERO
-  ======================================================== -->
+<!-- =======================================================
+     HERO
+======================================================== -->
 
-  <header class="hero">
+<header class="hero">
 
-    <div class="hero-content">
+  <div class="hero-content">
 
-      <div class="eyebrow">
+    <div class="hero-eyebrow">
+      <span>
         Northern Luzon · Philippines
-      </div>
+      </span>
+    </div>
 
-      <h1>
-        Discover<br>
+
+    <h1>
+
+      <span>
+        Discover
+      </span>
+
+      <span>
         Ilocos Norte
-      </h1>
+      </span>
 
-      <p class="hero-description">
-        Where the wind meets the sea, centuries-old stone
-        meets living culture, and every road leads to a story
-        worth remembering.
-      </p>
-
-      <div class="hero-buttons">
-
-        <a href="#destinations" class="button button-light">
-          Explore the North
-        </a>
-
-        <a href="#journey" class="button button-outline">
-          Plan Your Journey
-        </a>
-
-      </div>
-
-    </div>
-
-    <div class="scroll-indicator">
-      Scroll to explore ↓
-    </div>
-
-  </header>
+    </h1>
 
 
-  <!-- =======================================================
-       INTRO
-  ======================================================== -->
+    <p class="hero-description">
 
-  <section class="intro">
-
-    <div>
-
-      <div class="section-kicker">
-        01 — The North
-      </div>
-
-      <h2 class="section-title">
-        A place<br>
-        of contrasts.
-      </h2>
-
-    </div>
-
-    <p class="intro-text">
-
-      Ilocos Norte brings together dramatic coastlines,
-      wind-swept landscapes, historic architecture and
-      unmistakable Ilocano flavors.
-
-      <br><br>
-
-      From Bangui to Pagudpud and Paoay, the province offers
-      a journey that feels both timeless and alive.
+      Where the wind meets the sea,
+      centuries-old stone meets living culture,
+      and every road leads to a story worth remembering.
 
     </p>
 
-  </section>
 
-
-  <!-- =======================================================
-       DESTINATIONS
-  ======================================================== -->
-
-  <section id="destinations">
-
-    <div class="destination-header">
-
-      <div>
-
-        <div class="section-kicker">
-          02 — Destinations
-        </div>
-
-        <h2 class="section-title">
-          Go beyond<br>
-          the postcard.
-        </h2>
-
-      </div>
-
-      <p class="destination-intro">
-
-        Real places. Dramatic landscapes. A northern
-        experience shaped by the sea, wind, stone and
-        generations of Ilocano culture.
-
-      </p>
-
-    </div>
-
-
-    <div class="destination-grid">
-
-
-      <!-- BANGUI -->
-
-      <article class="destination-card">
-
-        <img
-          src="https://commons.wikimedia.org/wiki/Special:FilePath/Bangui%20WindMills.jpg?width=2400"
-          alt="Bangui Windmills in Ilocos Norte"
-          loading="eager"
-        >
-
-        <div class="destination-content">
-
-          <div class="destination-location">
-            Bangui · Coast
-          </div>
-
-          <h3>
-            Bangui Windmills
-          </h3>
-
-          <p>
-            Iconic turbines rising along the dramatic
-            shoreline of Bangui Bay.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <!-- PAGUDPUD -->
-
-      <article class="destination-card">
-
-        <img
-          src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Sea%20wonders%20of%20Saud.jpg?width=1800"
-          alt="Saud Beach Pagudpud Ilocos Norte"
-          loading="lazy"
-        >
-
-        <div class="destination-content">
-
-          <div class="destination-location">
-            Pagudpud · Sea
-          </div>
-
-          <h3>
-            Saud Beach
-          </h3>
-
-          <p>
-            Clear northern waters, quiet shores and
-            wide-open skies.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <!-- PAOAY -->
-
-      <article class="destination-card">
-
-        <img
-          src="https://commons.wikimedia.org/wiki/Special:FilePath/Paoay%20Church%20of%20Ilocos%20Norte%2C%20Philippines.JPG?width=1800"
-          alt="Paoay Church Ilocos Norte"
-          loading="lazy"
-        >
-
-        <div class="destination-content">
-
-          <div class="destination-location">
-            Paoay · Heritage
-          </div>
-
-          <h3>
-            Paoay Church
-          </h3>
-
-          <p>
-            An extraordinary expression of Philippine
-            Earthquake Baroque architecture.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <!-- PATAPAT -->
-
-      <article class="destination-card">
-
-        <img
-          src="https://commons.wikimedia.org/wiki/Special:FilePath/Patapat%20Viaduct%20in%20Pagudpud.jpg?width=2000"
-          alt="Patapat Viaduct Pagudpud"
-          loading="lazy"
-        >
-
-        <div class="destination-content">
-
-          <div class="destination-location">
-            Pagudpud · Road
-          </div>
-
-          <h3>
-            Patapat Viaduct
-          </h3>
-
-          <p>
-            A spectacular coastal road where mountain,
-            ocean and sky meet.
-          </p>
-
-        </div>
-
-      </article>
-
-
-    </div>
-
-  </section>
-
-
-  <!-- =======================================================
-       EXPERIENCE
-  ======================================================== -->
-
-  <section class="dark-section" id="experience">
-
-    <div class="destination-header">
-
-      <div>
-
-        <div class="section-kicker">
-          03 — Experience
-        </div>
-
-        <h2 class="section-title">
-          Four ways to<br>
-          feel the North.
-        </h2>
-
-      </div>
-
-      <p class="destination-intro">
-
-        Slow down. Look closer. Let the landscape
-        set the pace.
-
-      </p>
-
-    </div>
-
-
-    <div class="experience-grid">
-
-
-      <div class="experience">
-
-        <div class="experience-number">
-          01
-        </div>
-
-        <h3>
-          Heritage
-        </h3>
-
-        <p>
-          Walk through old churches, lighthouses and
-          towns shaped by centuries of history.
-        </p>
-
-      </div>
-
-
-      <div class="experience">
-
-        <div class="experience-number">
-          02
-        </div>
-
-        <h3>
-          Coast
-        </h3>
-
-        <p>
-          Follow the northern shoreline from wide
-          beaches to dramatic cliffs and coves.
-        </p>
-
-      </div>
-
-
-      <div class="experience">
-
-        <div class="experience-number">
-          03
-        </div>
-
-        <h3>
-          Adventure
-        </h3>
-
-        <p>
-          Ride the dunes, explore wild landscapes
-          and discover the adventurous side of Ilocos.
-        </p>
-
-      </div>
-
-
-      <div class="experience">
-
-        <div class="experience-number">
-          04
-        </div>
-
-        <h3>
-          Culture
-        </h3>
-
-        <p>
-          Taste Ilocano food and experience the
-          traditions that keep local culture alive.
-        </p>
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-  <!-- =======================================================
-       FOOD
-  ======================================================== -->
-
-  <section class="food" id="food">
-
-    <div class="food-layout">
-
-
-      <div class="food-image"></div>
-
-
-      <div class="food-copy">
-
-        <div class="section-kicker">
-          04 — Taste
-        </div>
-
-        <h2 class="section-title">
-          Ilocano food<br>
-          with character.
-        </h2>
-
-        <p>
-          Bold, honest and deeply rooted in place.
-          Make food part of the journey through
-          Ilocos Norte.
-        </p>
-
-
-        <div class="food-list">
-
-
-          <div class="dish">
-
-            <strong>
-              Ilocos Empanada
-            </strong>
-
-            <span>
-              Street classic
-            </span>
-
-          </div>
-
-
-          <div class="dish">
-
-            <strong>
-              Bagnet
-            </strong>
-
-            <span>
-              Crisp & rich
-            </span>
-
-          </div>
-
-
-          <div class="dish">
-
-            <strong>
-              Ilocos Longganisa
-            </strong>
-
-            <span>
-              Garlicky & savory
-            </span>
-
-          </div>
-
-
-          <div class="dish">
-
-            <strong>
-              Pinakbet
-            </strong>
-
-            <span>
-              Garden & sea
-            </span>
-
-          </div>
-
-
-          <div class="dish">
-
-            <strong>
-              Sukang Iloko
-            </strong>
-
-            <span>
-              Native vinegar
-            </span>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =======================================================
-       FINAL CTA
-  ======================================================== -->
-
-  <section class="cta" id="journey">
-
-    <div>
-
-      <div class="section-kicker">
-        05 — Your Journey
-      </div>
-
-      <h2>
-        Take the long way<br>
-        to the North.
-      </h2>
+    <div class="hero-buttons">
 
       <a
         href="#destinations"
         class="button button-light"
       >
-        Start Exploring
+        Explore the North
       </a>
 
-    </div>
-
-  </section>
-
-
-  <!-- =======================================================
-       FOOTER
-  ======================================================== -->
-
-  <footer>
-
-    <div class="footer-brand">
-      Discover Ilocos Norte
-    </div>
-
-    <div class="footer-info">
-
-      A destination guide for
-      Ilocos Norte, Philippines.
-
-      <br>
-
-      Photography displayed from Wikimedia Commons.
-      Please verify each image's current license
-      and attribution requirements before commercial reuse.
-
-      <br>
 
       <a
-        href="https://commons.wikimedia.org/"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="#journey"
+        class="button button-outline"
       >
-        Wikimedia Commons
+        Plan Your Journey
       </a>
 
     </div>
 
-  </footer>
+  </div>
 
 
-  <!-- =======================================================
-       JAVASCRIPT
-  ======================================================== -->
+  <div class="hero-scroll">
 
-  <script>
+    <span>
+      Scroll
+    </span>
 
-    const navbar =
-      document.getElementById("navbar");
+    <div class="scroll-line"></div>
 
-    window.addEventListener("scroll", () => {
+  </div>
 
-      if (window.scrollY > 50) {
+</header>
 
-        navbar.classList.add("scrolled");
 
-      } else {
+<!-- =======================================================
+     INTRO
+======================================================== -->
 
-        navbar.classList.remove("scrolled");
+<section class="intro">
 
-      }
+  <div class="reveal">
+
+    <div class="kicker">
+      01 — The North
+    </div>
+
+    <h2 class="title">
+      A place<br>
+      of contrasts.
+    </h2>
+
+  </div>
+
+
+  <p class="intro-copy reveal reveal-delay-1">
+
+    Ilocos Norte brings together dramatic coastlines,
+    wind-swept landscapes, historic architecture and
+    unmistakable Ilocano flavors.
+
+    <br><br>
+
+    From Bangui to Pagudpud and Paoay, the province offers
+    a journey that feels both timeless and alive.
+
+  </p>
+
+</section>
+
+
+<!-- =======================================================
+     DESTINATIONS
+======================================================== -->
+
+<section id="destinations">
+
+  <div class="destination-header reveal">
+
+    <div>
+
+      <div class="kicker">
+        02 — Destinations
+      </div>
+
+      <h2 class="title">
+        Go beyond<br>
+        the postcard.
+      </h2>
+
+    </div>
+
+
+    <p class="destination-description">
+
+      Real places. Dramatic landscapes.
+      A northern experience shaped by the sea,
+      wind, stone and generations of Ilocano culture.
+
+    </p>
+
+  </div>
+
+
+  <div class="destination-grid">
+
+
+    <article class="destination-card reveal">
+
+      <img
+        class="destination-image"
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Bangui%20WindMills.jpg?width=2400"
+        alt="Bangui Windmills Ilocos Norte"
+      >
+
+      <div class="destination-overlay"></div>
+
+      <div class="card-number">
+        01
+      </div>
+
+      <div class="destination-content">
+
+        <div class="location">
+          Bangui · Coast
+        </div>
+
+        <h3>
+          Bangui Windmills
+        </h3>
+
+        <p>
+          Iconic turbines rising along
+          the dramatic shoreline of Bangui Bay.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <article class="destination-card reveal reveal-delay-1">
+
+      <img
+        class="destination-image"
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Sea%20wonders%20of%20Saud.jpg?width=1800"
+        alt="Saud Beach Pagudpud"
+        loading="lazy"
+      >
+
+      <div class="destination-overlay"></div>
+
+      <div class="card-number">
+        02
+      </div>
+
+      <div class="destination-content">
+
+        <div class="location">
+          Pagudpud · Sea
+        </div>
+
+        <h3>
+          Saud Beach
+        </h3>
+
+        <p>
+          Clear northern waters, quiet shores
+          and wide-open skies.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <article class="destination-card reveal">
+
+      <img
+        class="destination-image"
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Paoay%20Church%20of%20Ilocos%20Norte%2C%20Philippines.JPG?width=1800"
+        alt="Paoay Church"
+        loading="lazy"
+      >
+
+      <div class="destination-overlay"></div>
+
+      <div class="card-number">
+        03
+      </div>
+
+      <div class="destination-content">
+
+        <div class="location">
+          Paoay · Heritage
+        </div>
+
+        <h3>
+          Paoay Church
+        </h3>
+
+        <p>
+          An extraordinary expression of
+          Philippine Earthquake Baroque architecture.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <article class="destination-card reveal reveal-delay-1">
+
+      <img
+        class="destination-image"
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Patapat%20Viaduct%20in%20Pagudpud.jpg?width=2000"
+        alt="Patapat Viaduct"
+        loading="lazy"
+      >
+
+      <div class="destination-overlay"></div>
+
+      <div class="card-number">
+        04
+      </div>
+
+      <div class="destination-content">
+
+        <div class="location">
+          Pagudpud · Road
+        </div>
+
+        <h3>
+          Patapat Viaduct
+        </h3>
+
+        <p>
+          A spectacular coastal road where
+          mountain, ocean and sky meet.
+        </p>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     EXPERIENCE
+======================================================== -->
+
+<section
+  class="dark"
+  id="experience"
+>
+
+  <div class="destination-header reveal">
+
+    <div>
+
+      <div class="kicker">
+        03 — Experience
+      </div>
+
+      <h2 class="title">
+        Four ways to<br>
+        feel the North.
+      </h2>
+
+    </div>
+
+
+    <p class="destination-description">
+
+      Slow down.
+      Look closer.
+      Let the landscape set the pace.
+
+    </p>
+
+  </div>
+
+
+  <div class="experience-grid">
+
+
+    <div class="experience reveal">
+
+      <div class="exp-number">
+        01
+      </div>
+
+      <h3>
+        Heritage
+      </h3>
+
+      <p>
+        Walk through old churches,
+        lighthouses and towns shaped
+        by centuries of history.
+      </p>
+
+    </div>
+
+
+    <div class="experience reveal reveal-delay-1">
+
+      <div class="exp-number">
+        02
+      </div>
+
+      <h3>
+        Coast
+      </h3>
+
+      <p>
+        Follow the northern shoreline
+        from wide beaches to dramatic
+        cliffs and coves.
+      </p>
+
+    </div>
+
+
+    <div class="experience reveal reveal-delay-2">
+
+      <div class="exp-number">
+        03
+      </div>
+
+      <h3>
+        Adventure
+      </h3>
+
+      <p>
+        Ride the dunes, explore wild
+        landscapes and discover the
+        adventurous side of Ilocos.
+      </p>
+
+    </div>
+
+
+    <div class="experience reveal reveal-delay-3">
+
+      <div class="exp-number">
+        04
+      </div>
+
+      <h3>
+        Culture
+      </h3>
+
+      <p>
+        Taste Ilocano food and experience
+        traditions that keep local culture alive.
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     FOOD
+======================================================== -->
+
+<section
+  class="food"
+  id="food"
+>
+
+  <div class="food-layout">
+
+
+    <div class="food-image-wrap reveal">
+
+      <img
+        class="food-image"
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Sea%20wonders%20of%20Saud.jpg?width=1800"
+        alt="Northern Ilocos coastline"
+        loading="lazy"
+      >
+
+    </div>
+
+
+    <div class="food-copy reveal reveal-delay-1">
+
+      <div class="kicker">
+        04 — Taste
+      </div>
+
+      <h2 class="title">
+        Ilocano food<br>
+        with character.
+      </h2>
+
+      <p>
+        Bold, honest and deeply rooted in place.
+        Make food part of the journey through
+        Ilocos Norte.
+      </p>
+
+
+      <div class="food-list">
+
+        <div class="dish">
+
+          <strong>
+            Ilocos Empanada
+          </strong>
+
+          <span>
+            Street classic
+          </span>
+
+        </div>
+
+
+        <div class="dish">
+
+          <strong>
+            Bagnet
+          </strong>
+
+          <span>
+            Crisp & rich
+          </span>
+
+        </div>
+
+
+        <div class="dish">
+
+          <strong>
+            Ilocos Longganisa
+          </strong>
+
+          <span>
+            Garlicky & savory
+          </span>
+
+        </div>
+
+
+        <div class="dish">
+
+          <strong>
+            Pinakbet
+          </strong>
+
+          <span>
+            Garden & sea
+          </span>
+
+        </div>
+
+
+        <div class="dish">
+
+          <strong>
+            Sukang Iloko
+          </strong>
+
+          <span>
+            Native vinegar
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     CTA
+======================================================== -->
+
+<section
+  class="cta"
+  id="journey"
+>
+
+  <div class="cta-bg" id="ctaBg"></div>
+
+
+  <div class="cta-content reveal">
+
+    <div class="kicker">
+      05 — Your Journey
+    </div>
+
+    <h2>
+      Take the long way<br>
+      to the North.
+    </h2>
+
+    <a
+      href="#destinations"
+      class="button button-light"
+    >
+      Start Exploring
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================== -->
+
+<footer>
+
+  <div class="footer-brand">
+    Discover Ilocos Norte
+  </div>
+
+
+  <div class="footer-info">
+
+    A destination guide for
+    Ilocos Norte, Philippines.
+
+    <br>
+
+    Photography displayed from Wikimedia Commons.
+    Please verify each image's current license
+    and attribution requirements before commercial reuse.
+
+    <br>
+
+    <a
+      href="https://commons.wikimedia.org/"
+      target="_blank"
+      rel="noopener"
+    >
+      Wikimedia Commons
+    </a>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   PRELOADER
+========================================================= */
+
+window.addEventListener("load", () => {
+
+  setTimeout(() => {
+
+    document
+      .getElementById("preloader")
+      .classList.add("hide");
+
+    document.body.classList.remove("loading");
+
+  }, 1700);
+
+});
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+const navbar =
+  document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+  if(window.scrollY > 60){
+
+    navbar.classList.add("scrolled");
+
+  }else{
+
+    navbar.classList.remove("scrolled");
+
+  }
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+  document.querySelectorAll(".reveal");
+
+const observer =
+  new IntersectionObserver(
+
+    entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("visible");
+
+          observer.unobserve(entry.target);
+
+        }
+
+      });
+
+    },
+
+    {
+      threshold:.12,
+      rootMargin:"0px 0px -50px 0px"
+    }
+
+  );
+
+revealElements.forEach(element => {
+
+  observer.observe(element);
+
+});
+
+
+/* =========================================================
+   CTA PARALLAX
+========================================================= */
+
+const ctaBg =
+  document.getElementById("ctaBg");
+
+window.addEventListener("scroll", () => {
+
+  const rect =
+    ctaBg.parentElement.getBoundingClientRect();
+
+  const viewport =
+    window.innerHeight;
+
+  if(
+    rect.top < viewport &&
+    rect.bottom > 0
+  ){
+
+    const progress =
+      (viewport - rect.top) /
+      (viewport + rect.height);
+
+    const movement =
+      (progress - .5) * 55;
+
+    ctaBg.style.transform =
+      `translateY(${movement}px) scale(1.08)`;
+
+  }
+
+});
+
+
+/* =========================================================
+   SMOOTH ANCHOR OFFSET
+========================================================= */
+
+document
+  .querySelectorAll('a[href^="#"]')
+  .forEach(link => {
+
+    link.addEventListener("click", event => {
+
+      const target =
+        document.querySelector(
+          link.getAttribute("href")
+        );
+
+      if(!target) return;
+
+      event.preventDefault();
+
+      const offset = 75;
+
+      const position =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        offset;
+
+      window.scrollTo({
+
+        top:position,
+
+        behavior:"smooth"
+
+      });
 
     });
 
-  </script>
+  });
+
+</script>
 
 </body>
 </html>
